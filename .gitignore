@@ -1,0 +1,11 @@
+# Written at install time by bin/lof-audio-supply init; never committed.
+settings.json
+
+# Optional root-owned policy override, created per host.
+policy.json
+
+# Published media lives under the FPP media estate, never in the repo.
+generations/
+staging/
+quarantine/
+health.json

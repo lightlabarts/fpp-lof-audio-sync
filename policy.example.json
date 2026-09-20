@@ -1,0 +1,36 @@
+{
+	"_comment": "Copy to policy.json to widen or narrow the approved estate. This file is read by the plugin but is NOT editable from the web form: keep it root-owned (chown root:root, chmod 0644) so a compromised web session can only choose between values you already approved. Every key is optional; anything omitted falls back to the built-in FPP 10 defaults.",
+
+	"source_roots": ["/home/fpp/media/music", "/home/fpp/media/upload"],
+	"publication_roots": ["/home/fpp/media/lof-audio-supply"],
+	"key_roots": ["/home/fpp/media/config", "/home/fpp/.ssh"],
+	"destination_roots": ["/var/www/lof-audio", "/srv/lof-audio"],
+
+	"service_users": ["lof-audio", "www-data"],
+
+	"_host_allowlist_comment": "Exact hosts, CIDR blocks, or dotted DNS suffixes. A bare substring never matches, and a /0 block is refused.",
+	"host_allowlist": [
+		"127.0.0.0/8",
+		"10.0.0.0/8",
+		"172.16.0.0/12",
+		"192.168.0.0/16",
+		"::1/128",
+		"fd00::/8",
+		".lightsonfalcon.com",
+		".local"
+	],
+
+	"allowed_binaries": ["/usr/bin/rsync", "/usr/bin/ssh"],
+	"known_hosts_path": "/home/fpp/media/config/lof-audio-known_hosts",
+
+	"asset_extensions": ["mp3", "ogg", "wav", "flac", "m4a", "aac", "json"],
+
+	"min_sync_interval_seconds": 5,
+	"max_sync_interval_seconds": 86400,
+	"min_retain_generations": 1,
+	"max_retain_generations": 20,
+	"min_quarantine_retention_days": 1,
+	"max_quarantine_retention_days": 365,
+	"max_asset_bytes": 2147483648,
+	"transfer_timeout_seconds": 3600
+}

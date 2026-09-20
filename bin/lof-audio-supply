@@ -1,0 +1,328 @@
+#!/usr/bin/env php
+<?php
+/**
+ * LOF Audio Supply - command line entry point.
+ *
+ * This is the only executable surface. The web page never runs a command of
+ * its own: it calls the same library this script does, so there is exactly one
+ * set of rules to audit.
+ *
+ * Usage:
+ *   lof-audio-supply init
+ *   lof-audio-supply status [--json]
+ *   lof-audio-supply publish [--json] [--force]
+ *   lof-audio-supply verify [--json]
+ *   lof-audio-supply rollback [--json]
+ *   lof-audio-supply reclaim-staging [--older-than-seconds=N]
+ *   lof-audio-supply prune-quarantine --retention-days=N --confirm
+ *   lof-audio-supply distribute [--json]
+ *   lof-audio-supply probe
+ *   lof-audio-supply show-argv            (prints the vector distribution would use)
+ *   lof-audio-supply self-check
+ */
+
+declare(strict_types=1);
+
+use LofAudioSupply\AuthException;
+use LofAudioSupply\IntegrityException;
+use LofAudioSupply\LockException;
+use LofAudioSupply\LofAudioException;
+use LofAudioSupply\PolicyViolationException;
+use LofAudioSupply\Publish\Manifest;
+use LofAudioSupply\Runtime;
+use LofAudioSupply\Status\Health;
+use LofAudioSupply\Support\Json;
+use LofAudioSupply\ValidationException;
+
+if (PHP_SAPI !== 'cli') {
+    http_response_code(403);
+    echo "This entry point is command line only.\n";
+    exit(1);
+}
+
+require_once __DIR__ . '/../lib/bootstrap.php';
+
+const EXIT_OK = 0;
+const EXIT_ERROR = 1;
+const EXIT_VALIDATION = 2;
+const EXIT_LOCKED = 3;
+const EXIT_INTEGRITY = 4;
+const EXIT_USAGE = 64;
+
+/**
+ * Every command, and the only flags it accepts.
+ *
+ * A flag the named command does not declare is an error, not something to
+ * ignore. That keeps `status --older-than-seconds='; id'` from being quietly
+ * accepted just because status happens not to read that flag.
+ */
+const COMMANDS = [
+    'init' => ['json'],
+    'status' => ['json'],
+    'publish' => ['json', 'force'],
+    'verify' => ['json'],
+    'rollback' => ['json'],
+    'reclaim-staging' => ['json', 'older-than-seconds'],
+    'prune-quarantine' => ['json', 'retention-days', 'confirm'],
+    'distribute' => ['json'],
+    'probe' => ['json'],
+    'show-argv' => ['json'],
+    'self-check' => ['json'],
+];
+
+/**
+ * Strict argument parsing: a command and a flag both have to be declared
+ * above, and a flag has to match a fixed shape. Nothing is passed through to
+ * a shell, an argument, or a path.
+ *
+ * @param list<string> $argv
+ * @return array{command:string,flags:array<string,string|bool>}
+ */
+function parseArguments(array $argv): array
+{
+    $command = $argv[1] ?? 'status';
+    if (!isset(COMMANDS[$command])) {
+        fwrite(STDERR, "Unrecognised command.\n");
+        exit(EXIT_USAGE);
+    }
+    $flags = [];
+    for ($i = 2, $count = count($argv); $i < $count; $i++) {
+        $arg = $argv[$i];
+        if (preg_match('/^--([a-z][a-z0-9-]{0,39})(?:=([A-Za-z0-9._\/-]{0,128}))?$/', $arg, $matches) !== 1) {
+            fwrite(STDERR, "Unrecognised argument.\n");
+            exit(EXIT_USAGE);
+        }
+        if (!in_array($matches[1], COMMANDS[$command], true)) {
+            fwrite(STDERR, 'Flag --' . $matches[1] . " is not accepted by this command.\n");
+            exit(EXIT_USAGE);
+        }
+        $flags[$matches[1]] = $matches[2] ?? true;
+    }
+
+    return ['command' => $command, 'flags' => $flags];
+}
+
+/** @param array<string,string|bool> $flags */
+function intFlag(array $flags, string $name, int $default, int $min, int $max): int
+{
+    if (!isset($flags[$name]) || $flags[$name] === true) {
+        return $default;
+    }
+    $raw = (string) $flags[$name];
+    if (preg_match('/^\d{1,9}$/', $raw) !== 1) {
+        fwrite(STDERR, "Flag --{$name} must be a non-negative integer.\n");
+        exit(EXIT_USAGE);
+    }
+    $value = (int) $raw;
+    if ($value < $min || $value > $max) {
+        fwrite(STDERR, "Flag --{$name} is out of range.\n");
+        exit(EXIT_USAGE);
+    }
+
+    return $value;
+}
+
+/** @param array<string,mixed> $payload */
+function emit(array $payload, bool $json): void
+{
+    if ($json) {
+        echo Json::pretty($payload);
+
+        return;
+    }
+    echo renderPlain($payload, 0);
+}
+
+/** @param array<string,mixed> $payload */
+function renderPlain(array $payload, int $indent): string
+{
+    $pad = str_repeat('  ', $indent);
+    $out = '';
+    foreach ($payload as $key => $value) {
+        if (is_array($value)) {
+            if ($value === []) {
+                $out .= $pad . $key . ": (none)\n";
+                continue;
+            }
+            $out .= $pad . $key . ":\n" . renderPlain($value, $indent + 1);
+            continue;
+        }
+        if (is_bool($value)) {
+            $value = $value ? 'yes' : 'no';
+        }
+        if ($value === null) {
+            $value = '(none)';
+        }
+        $out .= $pad . $key . ': ' . $value . "\n";
+    }
+
+    return $out;
+}
+
+$parsed = parseArguments($argv);
+$command = $parsed['command'];
+$flags = $parsed['flags'];
+$json = isset($flags['json']);
+
+try {
+    $runtime = new Runtime();
+
+    switch ($command) {
+        case 'status':
+            [$settings, $settingsError] = $runtime->store()->loadTolerant();
+            if ($settings === null) {
+                emit(['state' => 'failed', 'settings_error' => $settingsError], $json);
+                exit(EXIT_VALIDATION);
+            }
+            $generations = $runtime->generations($settings);
+            $generations->initialise();
+            emit(Health::current($generations, $settings), $json);
+            exit(EXIT_OK);
+
+        case 'publish':
+            $settings = $runtime->store()->load();
+            if (!$settings->enabled) {
+                emit(['outcome' => 'skipped', 'reason' => 'publishing is disabled in settings'], $json);
+                exit(EXIT_OK);
+            }
+            // The systemd timer ticks on a fixed, static schedule so no
+            // operator-supplied value is ever interpolated into a unit file.
+            // The configured interval is applied here instead.
+            $generations = $runtime->generations($settings);
+            $generations->initialise();
+            $healthPath = $generations->healthPath();
+            if (!isset($flags['force']) && is_file($healthPath)) {
+                $age = time() - (int) filemtime($healthPath);
+                if ($age >= 0 && $age < $settings->syncIntervalSeconds) {
+                    emit([
+                        'outcome' => 'skipped',
+                        'reason' => 'inside the configured sync interval',
+                        'seconds_since_last_run' => $age,
+                        'sync_interval_seconds' => $settings->syncIntervalSeconds,
+                    ], $json);
+                    exit(EXIT_OK);
+                }
+            }
+            $result = $runtime->publisher($settings)->publish();
+            emit($result->toArray(), $json);
+            exit(EXIT_OK);
+
+        case 'init':
+            // Create settings.json from policy defaults, or migrate an
+            // existing file forward. Never overwrites a valid configuration.
+            $store = $runtime->store();
+            $created = false;
+            if (!$store->exists()) {
+                $store->save($store->validator()->validate($store->defaultsArray()));
+                $created = true;
+            } else {
+                $store->save($store->load());
+            }
+            [$settings, $settingsError] = $store->loadTolerant();
+            if ($settings !== null) {
+                $generations = $runtime->generations($settings);
+                $generations->initialise();
+                $runtime->publisher($settings)->writeHealth(Health::STATE_IDLE, ['outcome' => 'initialised']);
+            }
+            emit([
+                'settings_file' => $store->path(),
+                'created' => $created,
+                'settings_valid' => $settings !== null,
+                'settings_error' => $settingsError,
+            ], $json);
+            exit($settings === null ? EXIT_VALIDATION : EXIT_OK);
+
+        case 'verify':
+            $settings = $runtime->store()->load();
+            $problems = $runtime->publisher($settings)->verifyCurrent();
+            emit(['problem_count' => count($problems), 'problems' => array_slice($problems, 0, 50)], $json);
+            exit($problems === [] ? EXIT_OK : EXIT_INTEGRITY);
+
+        case 'rollback':
+            $settings = $runtime->store()->load();
+            $target = $runtime->publisher($settings)->rollback();
+            emit(['outcome' => 'rolled_back', 'generation' => $target], $json);
+            exit(EXIT_OK);
+
+        case 'reclaim-staging':
+            $settings = $runtime->store()->load();
+            $generations = $runtime->generations($settings);
+            $generations->initialise();
+            $reclaimed = $generations->reclaimStaging(intFlag($flags, 'older-than-seconds', 3600, 0, 604800));
+            emit(['reclaimed' => $reclaimed], $json);
+            exit(EXIT_OK);
+
+        case 'prune-quarantine':
+            $settings = $runtime->store()->load();
+            $generations = $runtime->generations($settings);
+            $generations->initialise();
+            $days = intFlag($flags, 'retention-days', $settings->quarantineRetentionDays, 1, 3650);
+            // Deletion always needs a second, explicit act.
+            $removed = $generations->pruneQuarantine($days, isset($flags['confirm']));
+            emit(['retention_days' => $days, 'removed' => $removed], $json);
+            exit(EXIT_OK);
+
+        case 'distribute':
+            $settings = $runtime->store()->load();
+            $publisher = $runtime->publisher($settings);
+            $outcome = $publisher->distribute($runtime->remoteTransport($settings));
+            emit($outcome, $json);
+            exit(EXIT_OK);
+
+        case 'probe':
+            $settings = $runtime->store()->load();
+            $transport = $runtime->remoteTransport($settings);
+            $result = $runtime->processRunner()->run($transport->buildProbeArgv(), 30);
+            emit([
+                'reachable' => $result->succeeded(),
+                'exit_code' => $result->exitCode,
+                'stderr' => $result->stderr,
+            ], $json);
+            exit($result->succeeded() ? EXIT_OK : EXIT_ERROR);
+
+        case 'show-argv':
+            $settings = $runtime->store()->load();
+            $transport = $runtime->remoteTransport($settings);
+            emit([
+                'rsync_argv' => $transport->buildRsyncArgv($settings->publicationRoot . '/current', $settings->destinationPath, '/dev/null'),
+                'probe_argv' => $transport->buildProbeArgv(),
+            ], $json);
+            exit(EXIT_OK);
+
+        case 'self-check':
+            [$settings, $settingsError] = $runtime->store()->loadTolerant();
+            $report = [
+                'php_version' => PHP_VERSION,
+                'plugin_dir' => $runtime->pluginDir(),
+                'settings_file' => $runtime->store()->path(),
+                'settings_valid' => $settings !== null,
+                'settings_error' => $settingsError,
+                'policy' => $runtime->policy()->toArray(),
+                'binaries' => [],
+                'checked_utc' => Manifest::nowUtc(),
+            ];
+            foreach ($runtime->policy()->allowedBinaries as $binary) {
+                $report['binaries'][basename($binary)] = is_executable($binary) ? 'present' : 'missing';
+            }
+            emit($report, $json);
+            exit($settings === null ? EXIT_VALIDATION : EXIT_OK);
+
+        default:
+            // Unreachable while COMMANDS and this switch agree; kept so that
+            // adding a command to one and not the other fails loudly.
+            fwrite(STDERR, "Unknown command: {$command}\n");
+            exit(EXIT_USAGE);
+    }
+} catch (LockException $e) {
+    fwrite(STDERR, 'Locked: ' . $e->getMessage() . ' [' . $e->code() . "]\n");
+    exit(EXIT_LOCKED);
+} catch (IntegrityException $e) {
+    fwrite(STDERR, 'Integrity: ' . $e->getMessage() . ' [' . $e->code() . "]\n");
+    exit(EXIT_INTEGRITY);
+} catch (ValidationException | PolicyViolationException | AuthException $e) {
+    fwrite(STDERR, 'Refused: ' . $e->getMessage() . ' [' . $e->code() . "]\n");
+    exit(EXIT_VALIDATION);
+} catch (LofAudioException $e) {
+    fwrite(STDERR, 'Failed: ' . $e->getMessage() . ' [' . $e->code() . "]\n");
+    exit(EXIT_ERROR);
+}

@@ -1,15 +1,19 @@
 <?php
 
-# Menu entries for LOF Audio File Sync plugin
-# $menuEntries is an array of menu entries for this plugin
-# text - menu entry text
-# type - status/content/output/help (main menu area)
-# page - PHP file to display for this menu item
-# wrap - 0/1 to hide or display the FPP header, menu, and footer on this page
+# Menu entries for the LOF Audio Supply plugin.
+# $menuEntries is an array of menu entries for this plugin.
+#   text - menu entry text
+#   type - status/content/output/help (main menu area)
+#   page - PHP file to display for this menu item
+#   wrap - 0/1 to hide or display the FPP header, menu, and footer on this page
+#
+# config.php is rendered as a fragment (wrap = 1) and refuses to render at all
+# if it is fetched directly rather than included by FPP's plugin dispatcher,
+# because FPP's authentication lives on the dispatcher path.
 
 $menuEntries = Array(
 	Array(
-		'text' => 'LOF Audio Sync',
+		'text' => 'LOF Audio Supply',
 		'type' => 'content',
 		'page' => 'config.php',
 		'wrap' => 1
@@ -29,7 +33,7 @@ foreach ($menuEntries as $entry)
 	if (preg_match('/^http.?:\/\//', $entry['page']))
 	{
 		printf("<li><a href='%s' target='_blank'>%s</a></li>\n",
-			$entry['page'], $entry['text']);
+			htmlspecialchars($entry['page'], ENT_QUOTES), htmlspecialchars($entry['text'], ENT_QUOTES));
 	}
 	else
 	{
@@ -38,7 +42,8 @@ foreach ($menuEntries as $entry)
 			$nopage = '&nopage=1';
 
 		printf("<li><a href='plugin.php?plugin=%s&page=%s%s'>%s</a></li>\n",
-			$plugin, $entry['page'], $nopage, $entry['text']);
+			htmlspecialchars($plugin, ENT_QUOTES), htmlspecialchars($entry['page'], ENT_QUOTES),
+			$nopage, htmlspecialchars($entry['text'], ENT_QUOTES));
 	}
 }
 ?>
