@@ -45,5 +45,13 @@
 		"retain_generations": 3,
 		"encode_timeout_seconds": 600,
 		"public_web_roots": ["/opt/fpp/www", "/var/www", "/srv/www", "/usr/share/nginx", "/usr/share/apache2"]
+	},
+
+	"_viewer_distribution_comment": "Operator-only delivery of the verified viewer publication (viewer-distribute). Disarmed, no destination. Two separate absolute roots, outside every web root and disjoint from the local publication, masters, keys and the media-supply destinations. mode 'local' only: 'remote' is refused until a destination read-back exists (README).",
+	"viewer_distribution": {
+		"enabled": false,
+		"mode": "local",
+		"viewer_destination": "",
+		"private_destination": ""
 	}
 }

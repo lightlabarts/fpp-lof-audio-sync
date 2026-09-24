@@ -216,6 +216,31 @@ The timer's `publish` then runs the lane after each good supply run.
 The lane never serves bytes, issues grants, or knows about listeners; that is `lof-core`'s side of
 the contract.
 
+### Delivering the viewer publication (`viewer-distribute`)
+
+A separate, operator-only command. It is never run by the timer, and it does not reuse or repurpose the media-supply `distribute`, which ships masters. It is configured only in the root-owned `viewer_distribution` policy block. That block is disarmed by default and has no destination.
+
+It ships the verified current viewer generation to two separately configured roots:
+- `viewer_destination`
+- `private_destination`
+
+It never infers either root from `destination_path`. It follows the contract commit order:
+
+1. renditions
+2. manifest
+3. private source map
+4. read the destination back and run the consumer pipeline against it
+5. `health.json` last
+
+The file lists come from the verified manifest. There is no glob, directory listing or delete. A failure at any step leaves the destination's old `health.json` authoritative. Delivered generations are never removed, so current and previous stay recoverable. A destination rollback is a local `viewer-rollback` followed by `viewer-distribute`.
+
+**Only `mode: "local"` works today.** Its destinations are paths on this host, delivered with the existing `LocalTransport` and read back directly. **`mode: "remote"` is refused before any transfer.** The existing SSH/rsync transport can write, with checksummed per-file temp-then-rename, but it has no allowlisted remote read. So it cannot prove the destination before moving the health pointer, and a delivery that skipped that proof would not be health-last in any meaningful sense.
+
+```bash
+./scripts/lof_audio_supply.sh viewer-distribute --json
+```
+
+
 ## Tests
 
 No composer, no PHPUnit — FPP images ship neither. The suite is pure PHP and runs anywhere PHP 8.1+

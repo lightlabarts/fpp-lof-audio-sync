@@ -58,7 +58,11 @@ abstract class TestCase
             return;
         }
         if (is_link($path) || !is_dir($path)) {
-            @chmod($path, 0644);
+            // chmod() follows a symlink: never touch a link's target (a test
+            // may plant a link to /etc/passwd).
+            if (!is_link($path)) {
+                @chmod($path, 0644);
+            }
             @unlink($path);
 
             return;

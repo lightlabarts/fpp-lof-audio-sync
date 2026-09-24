@@ -13,10 +13,13 @@ use LofAudioSupply\Publish\Generations;
 use LofAudioSupply\Publish\Publisher;
 use LofAudioSupply\Transport\LocalTransport;
 use LofAudioSupply\Transport\SshRsyncTransport;
+use LofAudioSupply\Viewer\DistributionConfig;
 use LofAudioSupply\Viewer\FfmpegEncoder;
+use LofAudioSupply\Viewer\LocalDestinationVerifier;
 use LofAudioSupply\Viewer\M4aInspector;
 use LofAudioSupply\Viewer\SupplyMasterSource;
 use LofAudioSupply\Viewer\ViewerConfig;
+use LofAudioSupply\Viewer\ViewerDistributor;
 use LofAudioSupply\Viewer\ViewerPublisher;
 
 /**
@@ -118,6 +121,22 @@ final class Runtime
             new FfmpegEncoder($this->processRunner(), $config->encoder, $config->encodeTimeoutSeconds),
             new M4aInspector()
         );
+    }
+
+    /**
+     * Viewer-publication delivery. Local mode reuses LocalTransport and reads
+     * the destination back; remote mode gets no verifier, so the distributor
+     * refuses it before any transfer (see ViewerDistributor).
+     */
+    public function viewerDistributor(Settings $settings): ViewerDistributor
+    {
+        $viewer = $this->viewerConfig($settings);
+        $config = DistributionConfig::fromPolicy($this->policy, $settings, $viewer);
+        $verifier = $config->mode === DistributionConfig::MODE_LOCAL
+            ? new LocalDestinationVerifier($config->viewerDestination, $config->privateDestination)
+            : null;
+
+        return new ViewerDistributor($config, $viewer, $this->generations($settings), $settings, $this->localTransport(), $verifier);
     }
 
     public function remoteTransport(Settings $settings): SshRsyncTransport

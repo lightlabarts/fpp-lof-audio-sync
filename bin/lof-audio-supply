@@ -20,6 +20,7 @@
  *   lof-audio-supply show-argv            (prints the vector distribution would use)
  *   lof-audio-supply self-check
  *   lof-audio-supply viewer-publish | viewer-verify | viewer-rollback | viewer-recover   [--json]
+ *   lof-audio-supply viewer-distribute [--json]   (operator-only; disarmed unless policy arms it)
  */
 
 declare(strict_types=1);
@@ -73,6 +74,7 @@ const COMMANDS = [
     'viewer-verify' => ['json'],
     'viewer-rollback' => ['json'],
     'viewer-recover' => ['json'],
+    'viewer-distribute' => ['json'],
 ];
 
 /**
@@ -224,6 +226,18 @@ try {
             }
             emit($payload, $json);
             exit($exit);
+
+        case 'viewer-distribute':
+            // Never run by the timer: delivery is an explicit operator act.
+            $settings = $runtime->store()->load();
+            if (!$runtime->viewerEnabled()) {
+                emit(['outcome' => 'skipped', 'reason' => 'the viewer-rendition lane is disabled in policy'], $json);
+                exit(EXIT_ERROR);
+            }
+            $supply = $runtime->generations($settings);
+            $supply->initialise();
+            emit($runtime->viewerDistributor($settings)->distribute(), $json);
+            exit(EXIT_OK);
 
         case 'viewer-publish':
         case 'viewer-rollback':

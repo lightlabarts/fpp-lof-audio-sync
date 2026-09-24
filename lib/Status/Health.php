@@ -88,6 +88,7 @@ final class Health
             // stays ok while a verified generation is current; failures are
             // reported here (contract V1 section 5.6).
             'viewer_rendition' => self::viewerLastRun($generations),
+            'viewer_distribution' => self::viewerLastRun($generations, 'viewer-distribute-last-run.json'),
             // Scope contract. Audio supply owns media delivery and nothing else.
             'owns' => [
                 'media_supply' => true,
@@ -124,9 +125,9 @@ final class Health
     }
 
     /** @return array<string,mixed>|null */
-    private static function viewerLastRun(Generations $generations): ?array
+    private static function viewerLastRun(Generations $generations, string $file = 'viewer-last-run.json'): ?array
     {
-        $path = $generations->root() . '/viewer-last-run.json';
+        $path = $generations->root() . '/' . $file;
         if (is_link($path) || !is_file($path)) {
             return null;
         }

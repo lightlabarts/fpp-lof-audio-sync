@@ -55,6 +55,13 @@ final class Policy
      * @var array<string,mixed>
      */
     public readonly array $viewerRendition;
+    /**
+     * Raw `viewer_distribution` block; validated by Viewer\DistributionConfig
+     * only when `viewer-distribute` runs.
+     *
+     * @var array<string,mixed>
+     */
+    public readonly array $viewerDistribution;
 
     /** @param array<string,mixed> $overrides */
     public function __construct(array $overrides = [])
@@ -84,6 +91,10 @@ final class Policy
             throw new LofAudioException('policy.bad_viewer_rendition', 'viewer_rendition must be an object.');
         }
         $this->viewerRendition = $merged['viewer_rendition'];
+        if (!is_array($merged['viewer_distribution']) || array_is_list($merged['viewer_distribution']) && $merged['viewer_distribution'] !== []) {
+            throw new LofAudioException('policy.bad_viewer_distribution', 'viewer_distribution must be an object.');
+        }
+        $this->viewerDistribution = $merged['viewer_distribution'];
     }
 
     /** @return array<string,mixed> */
@@ -139,6 +150,8 @@ final class Policy
             'known_hosts_path' => self::FPP_MEDIA_ROOT . '/config/lof-audio-known_hosts',
             // Viewer-rendition lane: disabled unless a root-owned policy turns it on.
             'viewer_rendition' => [],
+            // Viewer-publication distribution: disarmed, no destination set.
+            'viewer_distribution' => [],
         ];
     }
 
@@ -225,6 +238,7 @@ final class Policy
             'asset_extensions' => $this->assetExtensions,
             'known_hosts_path' => $this->knownHostsPath,
             'viewer_rendition' => $this->viewerRendition,
+            'viewer_distribution' => $this->viewerDistribution,
         ];
     }
 }
