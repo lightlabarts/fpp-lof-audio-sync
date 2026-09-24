@@ -1,0 +1,947 @@
+{
+    "label": "POST /audio/grant; issue_base = fixtures/grants.json G_CUR_A.state",
+    "vectors": [
+        {
+            "id": "clamp_to_item_remaining",
+            "covers": "expiry = remaining 98 + margin 20",
+            "state": "issue_base",
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": true,
+                "reason": "ok",
+                "claims": {
+                    "typ": "lof-audio-grant",
+                    "ver": 1,
+                    "kid": "fixture-g1",
+                    "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+                    "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+                    "item": "acfb95e68b016c7aaa4c875e35587b62",
+                    "ctx": "current",
+                    "gen": "20260923T020000Z-5e1f0a3c",
+                    "iat": 1790129400,
+                    "nbf": 1790129400,
+                    "exp": 1790129518,
+                    "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                    "epoch": 7,
+                    "bud": {
+                        "req": 200,
+                        "bytes": 45056,
+                        "conc": 2,
+                        "rate_n": 20,
+                        "rate_s": 10,
+                        "win": 4096
+                    }
+                },
+                "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": true,
+                        "reason": "ok",
+                        "ctx": "current",
+                        "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "expires_at": 1790129518,
+                        "renew_at": 1790129503,
+                        "server_time": 1790129400,
+                        "item": {
+                            "key": "acfb95e68b016c7aaa4c875e35587b62",
+                            "title": "Overture at Midnight"
+                        },
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": [
+                        "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=118; Secure; HttpOnly; SameSite=Strict",
+                        "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "clamp_to_max_ttl",
+            "covers": "expiry capped by max_ttl 300",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 1000
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": true,
+                "reason": "ok",
+                "claims": {
+                    "typ": "lof-audio-grant",
+                    "ver": 1,
+                    "kid": "fixture-g1",
+                    "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+                    "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+                    "item": "acfb95e68b016c7aaa4c875e35587b62",
+                    "ctx": "current",
+                    "gen": "20260923T020000Z-5e1f0a3c",
+                    "iat": 1790129400,
+                    "nbf": 1790129400,
+                    "exp": 1790129700,
+                    "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                    "epoch": 7,
+                    "bud": {
+                        "req": 200,
+                        "bytes": 45056,
+                        "conc": 2,
+                        "rate_n": 20,
+                        "rate_s": 10,
+                        "win": 4096
+                    }
+                },
+                "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MDAsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.s8m4XLNfIaXj1os9WEIW7gJW3I6eJ9ZNIOHPrLYQFks",
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": true,
+                        "reason": "ok",
+                        "ctx": "current",
+                        "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "expires_at": 1790129700,
+                        "renew_at": 1790129685,
+                        "server_time": 1790129400,
+                        "item": {
+                            "key": "acfb95e68b016c7aaa4c875e35587b62",
+                            "title": "Overture at Midnight"
+                        },
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": [
+                        "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MDAsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.s8m4XLNfIaXj1os9WEIW7gJW3I6eJ9ZNIOHPrLYQFks; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=300; Secure; HttpOnly; SameSite=Strict",
+                        "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "clamp_item_ending_now",
+            "covers": "remaining 0 -> margin only",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129400,
+                    "remaining_s": 0
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": true,
+                "reason": "ok",
+                "claims": {
+                    "typ": "lof-audio-grant",
+                    "ver": 1,
+                    "kid": "fixture-g1",
+                    "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+                    "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+                    "item": "acfb95e68b016c7aaa4c875e35587b62",
+                    "ctx": "current",
+                    "gen": "20260923T020000Z-5e1f0a3c",
+                    "iat": 1790129400,
+                    "nbf": 1790129400,
+                    "exp": 1790129420,
+                    "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                    "epoch": 7,
+                    "bud": {
+                        "req": 200,
+                        "bytes": 45056,
+                        "conc": 2,
+                        "rate_n": 20,
+                        "rate_s": 10,
+                        "win": 4096
+                    }
+                },
+                "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk0MjAsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.9OvYkldYrc1fp4UfzBy-q7uvjSexWOsrNHi_seC-tAc",
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": true,
+                        "reason": "ok",
+                        "ctx": "current",
+                        "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "expires_at": 1790129420,
+                        "renew_at": 1790129405,
+                        "server_time": 1790129400,
+                        "item": {
+                            "key": "acfb95e68b016c7aaa4c875e35587b62",
+                            "title": "Overture at Midnight"
+                        },
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": [
+                        "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk0MjAsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.9OvYkldYrc1fp4UfzBy-q7uvjSexWOsrNHi_seC-tAc; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=20; Secure; HttpOnly; SameSite=Strict",
+                        "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "clamp_observation_age",
+            "covers": "remaining measured at observation, aged 5 s",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129395,
+                    "remaining_s": 50
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": true,
+                "reason": "ok",
+                "claims": {
+                    "typ": "lof-audio-grant",
+                    "ver": 1,
+                    "kid": "fixture-g1",
+                    "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+                    "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+                    "item": "acfb95e68b016c7aaa4c875e35587b62",
+                    "ctx": "current",
+                    "gen": "20260923T020000Z-5e1f0a3c",
+                    "iat": 1790129400,
+                    "nbf": 1790129400,
+                    "exp": 1790129465,
+                    "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                    "epoch": 7,
+                    "bud": {
+                        "req": 200,
+                        "bytes": 45056,
+                        "conc": 2,
+                        "rate_n": 20,
+                        "rate_s": 10,
+                        "win": 4096
+                    }
+                },
+                "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk0NjUsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.TMXV0--jvNet1CePRp7Zz6oXWCPBRS2KE2q3M0nYUwg",
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": true,
+                        "reason": "ok",
+                        "ctx": "current",
+                        "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "expires_at": 1790129465,
+                        "renew_at": 1790129450,
+                        "server_time": 1790129400,
+                        "item": {
+                            "key": "acfb95e68b016c7aaa4c875e35587b62",
+                            "title": "Overture at Midnight"
+                        },
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": [
+                        "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk0NjUsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.TMXV0--jvNet1CePRp7Zz6oXWCPBRS2KE2q3M0nYUwg; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=65; Secure; HttpOnly; SameSite=Strict",
+                        "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "client_named_asset_ignored",
+            "covers": "client cannot choose rid/item/asset (future item)",
+            "state": "issue_base",
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current",
+                "rid": "80ebfb410f608193f94af6227279e13d",
+                "asset": "Northern_Lights_Theme.mp3",
+                "item": "647da11ca33fe17ee25bebddd0ddb150"
+            },
+            "expect": {
+                "ok": true,
+                "reason": "ok",
+                "claims": {
+                    "typ": "lof-audio-grant",
+                    "ver": 1,
+                    "kid": "fixture-g1",
+                    "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+                    "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+                    "item": "acfb95e68b016c7aaa4c875e35587b62",
+                    "ctx": "current",
+                    "gen": "20260923T020000Z-5e1f0a3c",
+                    "iat": 1790129400,
+                    "nbf": 1790129400,
+                    "exp": 1790129518,
+                    "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                    "epoch": 7,
+                    "bud": {
+                        "req": 200,
+                        "bytes": 45056,
+                        "conc": 2,
+                        "rate_n": 20,
+                        "rate_s": 10,
+                        "win": 4096
+                    }
+                },
+                "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": true,
+                        "reason": "ok",
+                        "ctx": "current",
+                        "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "expires_at": 1790129518,
+                        "renew_at": 1790129503,
+                        "server_time": 1790129400,
+                        "item": {
+                            "key": "acfb95e68b016c7aaa4c875e35587b62",
+                            "title": "Overture at Midnight"
+                        },
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": [
+                        "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=118; Secure; HttpOnly; SameSite=Strict",
+                        "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "disabled",
+            "covers": "emergency disable",
+            "state": {
+                "now": 1790129400,
+                "disabled": true,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_disabled",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_disabled",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "publication_unverified",
+            "covers": "fail closed",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": false,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_publication",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_publication",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "session_too_short",
+            "covers": "listener id >= 128 bits",
+            "state": "issue_base",
+            "request": {
+                "session": "abc12345",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_session",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_session",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "session_with_space",
+            "covers": "validated, never sanitised",
+            "state": "issue_base",
+            "request": {
+                "session": "listener one 4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_session",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_session",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "ctx_previous",
+            "covers": "previous item cannot be requested",
+            "state": "issue_base",
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "previous"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_ctx",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_ctx",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "nothing_playing",
+            "covers": "fail closed",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": null,
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_nothing_playing",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_nothing_playing",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "playhead_stale",
+            "covers": "timing unknown",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129394,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_playhead_stale",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_playhead_stale",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "playhead_from_future",
+            "covers": "timing unknown",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129401,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_playhead_stale",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_playhead_stale",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "remaining_unknown",
+            "covers": "cannot clamp -> refuse",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": null
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_remaining_unknown",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_remaining_unknown",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "next_not_authoritative",
+            "covers": "future item",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 20
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": false
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "next"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_next_not_authoritative",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_next_not_authoritative",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "next_unknown",
+            "covers": "future item",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 20
+                },
+                "next": null
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "next"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_next_not_authoritative",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_next_not_authoritative",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "next_too_early",
+            "covers": "future item beyond preload lead",
+            "state": "issue_base",
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "next"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_next_too_early",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_next_too_early",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "item_unmapped",
+            "covers": "mapping unknown",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Pixel_Test.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_unmapped",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_unmapped",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "item_unpublished",
+            "covers": "unpublished item",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Unreleased_Encore.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 100
+                },
+                "next": {
+                    "name": "Northern_Lights_Theme.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "current"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_unpublished",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_unpublished",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        },
+        {
+            "id": "next_same_rendition",
+            "covers": "repeat play reuses current grant, never overwrites it",
+            "state": {
+                "now": 1790129400,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+                "current": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Overture at Midnight",
+                    "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                    "observed_at": 1790129398,
+                    "remaining_s": 20
+                },
+                "next": {
+                    "name": "Midnight_Overture.fseq",
+                    "title": "Aurora Theme",
+                    "item_id": "73b494f6e0fc7bc399f2207ba4c160dd",
+                    "authoritative": true
+                }
+            },
+            "request": {
+                "session": "listener-one_4f9c2a7b8e1d3c5a",
+                "ctx": "next"
+            },
+            "expect": {
+                "ok": false,
+                "reason": "issue_next_same_rendition",
+                "claims": null,
+                "token": null,
+                "response": {
+                    "status": 200,
+                    "body": {
+                        "ok": false,
+                        "reason": "issue_next_same_rendition",
+                        "fallback": "fm",
+                        "autoplay": false
+                    },
+                    "set_cookie": []
+                }
+            }
+        }
+    ]
+}

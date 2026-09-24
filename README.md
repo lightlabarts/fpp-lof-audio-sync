@@ -157,6 +157,65 @@ consumption by `lof-core`; this plugin does not call or modify `lof-core`.
 }
 ```
 
+## Viewer rendition lane
+
+The public listening player must never receive a show master. This lane turns the verified current
+media-supply generation into one purpose-made, metadata-free rendition per master, under a separate
+root that holds nothing else. It implements the publisher side of the frozen phone-audio
+cross-repository contract V1 (`contract_sha256 a21c74cc…3b13`), vendored byte-for-byte under
+`tests/contract-v1/`; its three publication schemas are pinned by digest in `contract/v1/`.
+
+```
+<viewer_root>/                              read-only for lof-core; outside every web root
+    health.json                             commit point, written last; only state "ok" is servable
+    manifests/<generation>.json             rendition ids, sizes, sha256 - nothing about a source
+    generations/<generation>/<rid>.m4a      renditions only
+    staging/  quarantine/                   in-progress and interrupted work; never referenced
+<private_root>/                             outside every web root and outside <viewer_root>
+    source-maps/<generation>.json           rid -> source_rel, source and rendition digests
+    viewer-ledger.json  quarantine/
+```
+
+- **One profile.** `lof-viewer-aac-lc-m4a-v1`: AAC-LC in M4A, 2 ch, 44.1 kHz, 128 kbit/s. The one
+  encoder invocation (`ViewerProfile::encoderArgv`) runs through the existing allowlisted argv
+  runner: `file:`-only input with a demuxer whitelist (a master that is really a playlist is
+  refused, not followed), first audio stream only, all global/stream metadata and chapters
+  dropped, bit-exact flags, one thread. Two runs over the same master give the same bytes.
+- **Metadata stripped and proved.** ffmpeg's MP4 muxer always writes an empty iTunes skeleton; it is
+  retyped in place to zeroed padding, and anything more than that skeleton fails the run. A
+  pure-PHP box walker then refuses any box outside the minimal AAC track tree, any non-zero padding,
+  any external reference, and anything that is not AAC-LC 2 ch 44.1 kHz. Rendition bytes must not
+  contain the source path or name, and must differ from every master.
+- **Opaque ids.** `rid = HMAC-SHA256(rid_key, canonical(["lof-rid",1,generation,profile,source_rel,source_sha256]))[0:32]`:
+  128 bits, keyed, new in every generation. The rid key never leaves the root-owned key file; the
+  contract's fixture key is refused.
+- **Commit order.** Staging (marked `.incomplete`) is verified against the manifest, promoted by one
+  rename, then the manifest, then the private source map are written; the whole publication is
+  re-read from disk and run through the contract's consumer pipeline; only then is `health.json`
+  written. A failure leaves `health.json` alone - unless what it names no longer verifies, in which
+  case it is marked `failed` so it cannot be served. Failures are reported in the media-supply
+  `health.json` under `viewer_rendition`, by code only.
+- **Recovery, quarantine, rollback.** Under the media-supply lock, every run first moves anything
+  `health.json` has never named (staging leftovers, uncommitted generations, stray temp files) into
+  quarantine; source maps go to the private quarantine. Nothing is deleted except generations older
+  than the retained window, and never the current or previous one. `viewer-rollback` re-points
+  `health.json` at a previous generation only after it passes the full pipeline.
+
+Disabled by default. Enabling it is a root-side policy edit: add a `viewer_rendition` block (see
+`policy.example.json`), add the encoder to `allowed_binaries`, and create the rid key
+(`install -m 0600 /dev/null <key>; head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n' > <key>`).
+The timer's `publish` then runs the lane after each good supply run.
+
+```bash
+./scripts/lof_audio_supply.sh viewer-publish --json    # one lane cycle on its own
+./scripts/lof_audio_supply.sh viewer-verify --json     # prove the published generation (exit 4 if not)
+./scripts/lof_audio_supply.sh viewer-rollback --json   # back to the verified previous generation
+./scripts/lof_audio_supply.sh viewer-recover --json    # quarantine interrupted state now
+```
+
+The lane never serves bytes, issues grants, or knows about listeners; that is `lof-core`'s side of
+the contract.
+
 ## Tests
 
 No composer, no PHPUnit — FPP images ship neither. The suite is pure PHP and runs anywhere PHP 8.1+
@@ -171,7 +230,11 @@ Coverage: path safety and symlink escape, configuration validation, a 32-payload
 against every field, the exact rsync/ssh argument vectors, manifest creation/verification/tamper
 detection, the publication lifecycle, every named failure mode, concurrency (real forked processes,
 including `SIGKILL` recovery), secret redaction, the settings store and its v1 migration, the
-`config.php` request path, and FPP 10 paths and runtime constraints.
+`config.php` request path, FPP 10 paths and runtime constraints, and the viewer rendition lane:
+the vendored contract's digest, all 58 publication document vectors (with parity against the
+contract's own model), byte-for-byte reproduction of the contract's fixture publication through a
+stub encoder, and - where ffmpeg is installed - real deterministic, stripped encodes of tagged,
+cover-art and chaptered synthetic masters, end to end through the CLI.
 
 Everything runs against temporary directories shaped like the FPP 10 estate. Nothing touches a real
 `/home/fpp`, a real key, or a network.
@@ -203,7 +266,10 @@ activation, quarantine, rollback, the failure modes listed above, concurrency, r
   never run;
 - systemd unit installation, timer behaviour, or the `systemd-analyze verify` path;
 - performance or disk behaviour with a real show's media at real sizes;
-- any WordPress, Remote Falcon, hardware, speaker, or network integration.
+- any WordPress, Remote Falcon, hardware, speaker, or network integration;
+- the viewer lane on FPP 10's own ffmpeg build: determinism is proved across runs of one local
+  ffmpeg, and bit-exact output across ffmpeg versions is not claimed; playback of the rendition on
+  real Safari/iOS devices, and `lof-core` consuming a publication this lane wrote.
 
 ## Requirements
 

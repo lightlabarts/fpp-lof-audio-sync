@@ -1,0 +1,3184 @@
+{
+    "label": "synthetic compatibility vector - no real Safari/iOS capture exists in either baseline repository; these encode the request patterns the 989ea9d5 tests name (bytes=0-, bounded seek, iOS suffix, reopen-at-offset) plus the Safari bytes=0-1 probe its session class documents. No device claim.",
+    "rules": "now = state.now + step.at; state_ops apply before the step and persist; in_flight overrides usage.in_flight for that step only; after each step usage[jti].requests += spend.requests, usage[jti].bytes += spend.bytes, usage[jti].recent += [now] when spend.requests = 1.",
+    "sequences": [
+        {
+            "id": "safari_ios_cold_start",
+            "label": "synthetic compatibility vector",
+            "pattern": "tap-to-listen: bytes=0-1 probe, bytes=0-, then windowed continuation to the end",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 4096-8191/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8191,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "2e1bb5dc9e081bdd1066f9e545085e32bef2948a2156a87cc3bc2c13e8583606",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 3,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=8192-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 8192-12287/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 8192,
+                            "end": 12287,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "62907045fae6aebd5fc427bf7faba8e44787cb96408b1c4860d086e3e19980cf",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 4,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=12288-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12288-16383/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12288,
+                            "end": 16383,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "1b9c3f3b89fee1620c0324893ace93d7b19cb8a01b675dbe1fde6d0292c8d4a9",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 5,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=16384-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 16384-20479/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 16384,
+                            "end": 20479,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "ed28cbf11894c02fe78844d098a138c46a9c7ec054820df5401e8c3927d5e5c1",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 6,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=20480-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 20480-24575/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 20480,
+                            "end": 24575,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "66b137c9f76fe25c4641bf1788705535f6f6b5b1d2f9e4f7023fa99eccfbb572",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "ios_background_resume_network_change",
+            "label": "synthetic compatibility vector",
+            "pattern": "lock/background pause, resume at offset, overlapping retry after network change",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 4096-8191/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8191,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "2e1bb5dc9e081bdd1066f9e545085e32bef2948a2156a87cc3bc2c13e8583606",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 45,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=8192-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 8192-12287/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 8192,
+                            "end": 12287,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "62907045fae6aebd5fc427bf7faba8e44787cb96408b1c4860d086e3e19980cf",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 46,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=12288-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12288-16383/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12288,
+                            "end": 16383,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "1b9c3f3b89fee1620c0324893ace93d7b19cb8a01b675dbe1fde6d0292c8d4a9",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 47,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=12000-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12000-16095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12000,
+                            "end": 16095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "127acc3791873668b8c9bf89bdf7b8006a140290f4659b10c4811cddff97613e",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 48,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=16384-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 16384-20479/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 16384,
+                            "end": 20479,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "ed28cbf11894c02fe78844d098a138c46a9c7ec054820df5401e8c3927d5e5c1",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 49,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=20480-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 20480-24575/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 20480,
+                            "end": 24575,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "66b137c9f76fe25c4641bf1788705535f6f6b5b1d2f9e4f7023fa99eccfbb572",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "mid_song_join_seek_suffix",
+            "label": "synthetic compatibility vector",
+            "pattern": "mid-song join at an offset, iOS suffix trailer read, seek back, continue",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=14336-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 14336-18431/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 14336,
+                            "end": 18431,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "8a7949e67c84201ae0bd50e49db2561d463515cde25e52b146988a09b0305817",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=-5000",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 20480-24575/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 20480,
+                            "end": 24575,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "66b137c9f76fe25c4641bf1788705535f6f6b5b1d2f9e4f7023fa99eccfbb572",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 3,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=18432-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 18432-22527/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 18432,
+                            "end": 22527,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "3a6294080c5bb8c7b9215427ea0a1c7156d7756cedf0e973cbcd83ffe5187aec",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 4,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=2048-6143",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 2048-6143/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 2048,
+                            "end": 6143,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "968909f5271869fbdd3df7ce7842e9a89219a124800cb13d43e1d6479bcf670f",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 5,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=22528-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2048",
+                            "Content-Range": "bytes 22528-24575/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 22528,
+                            "end": 24575,
+                            "length": 2048
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2048
+                        },
+                        "body_sha256": "8f07c0f79602c3a34d0049bb8871a2bbf9ec58bdf314c3a2383f07fc054f1e70",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2048
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "overlapping_fetches",
+            "label": "synthetic compatibility vector",
+            "pattern": "probe overlapping an open body fetch is allowed; a third concurrent fetch is not",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "in_flight": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "in_flight": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 429,
+                        "reason": "budget_concurrency",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 429,
+                            "reason": "budget_concurrency",
+                            "ctx": "current",
+                            "bytes": 0
+                        }
+                    }
+                },
+                {
+                    "at": 3,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 4096-8191/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8191,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "2e1bb5dc9e081bdd1066f9e545085e32bef2948a2156a87cc3bc2c13e8583606",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "bulk_harvest_refused",
+            "label": "synthetic compatibility vector",
+            "pattern": "repeated full sweeps stop at the byte budget (1.5 x size + 2 windows)",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 4096-8191/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8191,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "2e1bb5dc9e081bdd1066f9e545085e32bef2948a2156a87cc3bc2c13e8583606",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=8192-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 8192-12287/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 8192,
+                            "end": 12287,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "62907045fae6aebd5fc427bf7faba8e44787cb96408b1c4860d086e3e19980cf",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 3,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=12288-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12288-16383/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12288,
+                            "end": 16383,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "1b9c3f3b89fee1620c0324893ace93d7b19cb8a01b675dbe1fde6d0292c8d4a9",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 4,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=16384-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 16384-20479/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 16384,
+                            "end": 20479,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "ed28cbf11894c02fe78844d098a138c46a9c7ec054820df5401e8c3927d5e5c1",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 5,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=20480-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 20480-24575/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 20480,
+                            "end": 24575,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "66b137c9f76fe25c4641bf1788705535f6f6b5b1d2f9e4f7023fa99eccfbb572",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 6,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 7,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 4096-8191/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8191,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "2e1bb5dc9e081bdd1066f9e545085e32bef2948a2156a87cc3bc2c13e8583606",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 8,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=8192-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 8192-12287/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 8192,
+                            "end": 12287,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "62907045fae6aebd5fc427bf7faba8e44787cb96408b1c4860d086e3e19980cf",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 9,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=12288-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12288-16383/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12288,
+                            "end": 16383,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "1b9c3f3b89fee1620c0324893ace93d7b19cb8a01b675dbe1fde6d0292c8d4a9",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 10,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=16384-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 16384-20479/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 16384,
+                            "end": 20479,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "ed28cbf11894c02fe78844d098a138c46a9c7ec054820df5401e8c3927d5e5c1",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 11,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 429,
+                        "reason": "budget_bytes",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 429,
+                            "reason": "budget_bytes",
+                            "ctx": "current",
+                            "bytes": 0
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "rate_burst",
+            "label": "synthetic compatibility vector",
+            "pattern": "more than rate_n requests inside rate_s is refused; the window then recovers",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 429,
+                        "reason": "budget_rate",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 429,
+                            "reason": "budget_rate",
+                            "ctx": "current",
+                            "bytes": 0
+                        }
+                    }
+                },
+                {
+                    "at": 10,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/24576",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 2
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "next_item_preload_and_transition",
+            "label": "synthetic compatibility vector",
+            "pattern": "bounded next-item head preload, preload budget stop, transition kills next+previous grants, current grant for B continues",
+            "state": {
+                "now": 1790129480,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "steps": [
+                {
+                    "at": 0,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=0-1",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "2",
+                            "Content-Range": "bytes 0-1/20480",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 1,
+                            "length": 2
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 2
+                        },
+                        "body_sha256": "7dda190abbc5bf8dd60977b576579a31042f8385e8c67368c9cdd0125a136093",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "next",
+                            "bytes": 2
+                        }
+                    }
+                },
+                {
+                    "at": 1,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=0-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 0-4095/20480",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 0,
+                            "end": 4095,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "5a3697c17a312b2703cdd0f2cca86e596e00cbabaa02deb7a0e6291c01587d3d",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "next",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 2,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=4096-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4094",
+                            "Content-Range": "bytes 4096-8189/20480",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 4096,
+                            "end": 8189,
+                            "length": 4094
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4094
+                        },
+                        "body_sha256": "9ea7747a4c3b1eb36a08910533170ecf0fa8a4f5506e3b19b876087c19d4de74",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "next",
+                            "bytes": 4094
+                        }
+                    }
+                },
+                {
+                    "at": 3,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=8190-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 429,
+                        "reason": "budget_bytes",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 429,
+                            "reason": "budget_bytes",
+                            "ctx": "next",
+                            "bytes": 0
+                        }
+                    }
+                },
+                {
+                    "at": 20,
+                    "state_ops": [
+                        {
+                            "op": "set",
+                            "path": [
+                                "current_item"
+                            ],
+                            "value": "647da11ca33fe17ee25bebddd0ddb150"
+                        },
+                        {
+                            "op": "set",
+                            "path": [
+                                "next_item"
+                            ],
+                            "value": null
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=8190-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 401,
+                        "reason": "grant_wrong_item",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 401,
+                            "reason": "grant_wrong_item",
+                            "ctx": "next",
+                            "bytes": 0
+                        }
+                    }
+                },
+                {
+                    "at": 20,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                        "headers": {
+                            "Range": "bytes=8192-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 401,
+                        "reason": "grant_wrong_item",
+                        "headers": {
+                            "Cache-Control": "private, no-store",
+                            "Content-Length": "0",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": null,
+                        "spend": {
+                            "requests": 0,
+                            "bytes": 0
+                        },
+                        "body_sha256": null,
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 401,
+                            "reason": "grant_wrong_item",
+                            "ctx": "current",
+                            "bytes": 0
+                        }
+                    }
+                },
+                {
+                    "at": 21,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=8190-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjM4OTEyLCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MzIsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk1MDAsIml0ZW0iOiI2NDdkYTExY2EzM2ZlMTdlZTI1YmViZGRkMGRkYjE1MCIsImp0aSI6ImY0ZGQ5NzEwZTAyMmUwODJmYjc5YmY3Y2YyODNlZGZhIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTUwMCwicmlkIjoiODBlYmZiNDEwZjYwODE5M2Y5NGFmNjIyNzI3OWUxM2QiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.JMLkV3G86EeIiDRm8vWXmeIclJHsbz2VusJpUzpMZfE",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 8190-12285/20480",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 8190,
+                            "end": 12285,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "592de4197a7c386ea1724638bd215629369b9af347adc42072d76ade2c668f9b",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                },
+                {
+                    "at": 22,
+                    "request": {
+                        "method": "GET",
+                        "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                        "headers": {
+                            "Range": "bytes=12286-",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "cookies": {
+                            "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjM4OTEyLCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MzIsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk1MDAsIml0ZW0iOiI2NDdkYTExY2EzM2ZlMTdlZTI1YmViZGRkMGRkYjE1MCIsImp0aSI6ImY0ZGQ5NzEwZTAyMmUwODJmYjc5YmY3Y2YyODNlZGZhIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTUwMCwicmlkIjoiODBlYmZiNDEwZjYwODE5M2Y5NGFmNjIyNzI3OWUxM2QiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.JMLkV3G86EeIiDRm8vWXmeIclJHsbz2VusJpUzpMZfE",
+                            "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                        }
+                    },
+                    "expect": {
+                        "status": 206,
+                        "reason": "ok",
+                        "headers": {
+                            "Accept-Ranges": "bytes",
+                            "Cache-Control": "private, no-store",
+                            "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                            "Content-Length": "4096",
+                            "Content-Range": "bytes 12286-16381/20480",
+                            "Content-Type": "audio/mp4",
+                            "Cross-Origin-Resource-Policy": "same-origin",
+                            "X-Content-Type-Options": "nosniff"
+                        },
+                        "range": {
+                            "start": 12286,
+                            "end": 16381,
+                            "length": 4096
+                        },
+                        "spend": {
+                            "requests": 1,
+                            "bytes": 4096
+                        },
+                        "body_sha256": "6978bc37e982c433a3afeb6d8bbed77482f7ff6298814c5e58f0fca03ce291e0",
+                        "telemetry": {
+                            "event": "lof_audio_media",
+                            "status": 206,
+                            "reason": "ok",
+                            "ctx": "current",
+                            "bytes": 4096
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

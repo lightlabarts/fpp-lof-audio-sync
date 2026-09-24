@@ -84,6 +84,10 @@ final class Health
             'settings' => $settings === null ? null : $settings->toPublicArray(),
             'settings_error' => $settingsError,
             'free_bytes' => Fs::freeBytes($generations->root()),
+            // The viewer-rendition lane's last outcome. Its own health.json
+            // stays ok while a verified generation is current; failures are
+            // reported here (contract V1 section 5.6).
+            'viewer_rendition' => self::viewerLastRun($generations),
             // Scope contract. Audio supply owns media delivery and nothing else.
             'owns' => [
                 'media_supply' => true,
@@ -117,6 +121,20 @@ final class Health
         $state = is_string($stored['state'] ?? null) ? $stored['state'] : self::STATE_IDLE;
 
         return self::build($generations, $settings, $state, $lastRun, $settingsError);
+    }
+
+    /** @return array<string,mixed>|null */
+    private static function viewerLastRun(Generations $generations): ?array
+    {
+        $path = $generations->root() . '/viewer-last-run.json';
+        if (is_link($path) || !is_file($path)) {
+            return null;
+        }
+        try {
+            return Json::readFile($path);
+        } catch (\Throwable $e) {
+            return ['outcome' => 'unreadable'];
+        }
     }
 
     /** @param array<string,mixed> $record */

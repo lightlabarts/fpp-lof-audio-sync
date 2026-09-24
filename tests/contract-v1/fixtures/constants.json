@@ -1,0 +1,126 @@
+{
+    "contract": "lof-phone-audio-cross-repo-contract",
+    "contract_version": 1,
+    "label": "FIXTURE ONLY - synthetic bytes, fixture keys; never deploy any value in this file",
+    "t0": 1790129400,
+    "t0_utc": "2026-09-23T02:10:00Z",
+    "generation": "20260923T020000Z-5e1f0a3c",
+    "previous_generation": "20260922T020000Z-0b7d3e21",
+    "grant_key_hex": "58545b980345b4327b6d325d1d64a1c5dcf77d1c45ac213dec1d6d196dfd5968",
+    "grant_kid": "fixture-g1",
+    "rid_key_hex": "45e2482de3c3c6cbb1c333ad726d9e7d37d8de041aeae155a8d0e8846b56d68d",
+    "rid_key_id": "fixture-r1",
+    "own_origin": "https://lights.example.test",
+    "synthetic_bytes": "bytes(label,size) = first size bytes of concat_i sha256_raw(\"lof-phone-audio-contract-v1|\" + label + \"|\" + i), i = 0,1,2,...; labels source-A, source-B, rendition-A, rendition-B. Not decodable audio.",
+    "assets": {
+        "A": {
+            "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+            "source_rel": "Masters/Midnight Overture (MASTER).wav",
+            "source_size": 61440,
+            "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+            "rendition_size": 24576,
+            "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+            "sequence": "Midnight_Overture.fseq",
+            "display_title": "Overture at Midnight"
+        },
+        "B": {
+            "rid": "80ebfb410f608193f94af6227279e13d",
+            "source_rel": "Northern_Lights_Theme.mp3",
+            "source_size": 51200,
+            "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+            "rendition_size": 20480,
+            "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66",
+            "sequence": "Northern_Lights_Theme.fseq",
+            "display_title": "Aurora Theme"
+        }
+    },
+    "item_ids": {
+        "A1": "acfb95e68b016c7aaa4c875e35587b62",
+        "A0": "b43d1d4f3b142d0e2335409f11ac8b93",
+        "B1": "647da11ca33fe17ee25bebddd0ddb150",
+        "A2": "73b494f6e0fc7bc399f2207ba4c160dd"
+    },
+    "sessions": {
+        "L1": "listener-one_4f9c2a7b8e1d3c5a",
+        "L2": "listener-two_9e8d7c6b5a4f3e2d"
+    },
+    "lof_core_item_map": {
+        "Midnight_Overture.fseq": "Masters/Midnight Overture (MASTER).wav",
+        "Northern_Lights_Theme.fseq": "Northern_Lights_Theme.mp3",
+        "Unreleased_Encore.fseq": "Encore_Final.flac"
+    },
+    "policy_production_default": {
+        "max_ttl_s": 300,
+        "recovery_margin_s": 20,
+        "preload_lead_s": 30,
+        "playhead_max_age_s": 5,
+        "renew_lead_s": 15,
+        "window_bytes": 262144,
+        "session_cookie_max_age_s": 43200,
+        "revocation_bound_s": 5,
+        "current": {
+            "req": 200,
+            "conc": 2,
+            "rate_n": 20,
+            "rate_s": 10,
+            "bytes_num": 3,
+            "bytes_den": 2,
+            "bytes_extra_windows": 2
+        },
+        "next": {
+            "req": 8,
+            "conc": 1,
+            "rate_n": 8,
+            "rate_s": 10,
+            "bytes_windows": 2
+        }
+    },
+    "policy_fixture": {
+        "max_ttl_s": 300,
+        "recovery_margin_s": 20,
+        "preload_lead_s": 30,
+        "playhead_max_age_s": 5,
+        "renew_lead_s": 15,
+        "window_bytes": 4096,
+        "session_cookie_max_age_s": 43200,
+        "revocation_bound_s": 5,
+        "current": {
+            "req": 200,
+            "conc": 2,
+            "rate_n": 20,
+            "rate_s": 10,
+            "bytes_num": 3,
+            "bytes_den": 2,
+            "bytes_extra_windows": 2
+        },
+        "next": {
+            "req": 8,
+            "conc": 1,
+            "rate_n": 8,
+            "rate_s": 10,
+            "bytes_windows": 2
+        }
+    },
+    "leak_denylist": [
+        "Masters/Midnight Overture (MASTER).wav",
+        "Midnight Overture (MASTER).wav",
+        "Midnight Overture (MASTER)",
+        "Midnight Overture",
+        "Northern_Lights_Theme.mp3",
+        "Northern_Lights_Theme",
+        "Midnight_Overture.fseq",
+        "Midnight_Overture",
+        "Northern_Lights_Theme.fseq",
+        "Unreleased_Encore.fseq",
+        "Encore_Final.flac",
+        ".fseq",
+        ".wav",
+        ".mp3",
+        ".flac",
+        "Masters/",
+        "/home/fpp",
+        "fpp-show.local",
+        "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+        "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6"
+    ]
+}

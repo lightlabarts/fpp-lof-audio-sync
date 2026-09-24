@@ -19,6 +19,7 @@
  *   lof-audio-supply probe
  *   lof-audio-supply show-argv            (prints the vector distribution would use)
  *   lof-audio-supply self-check
+ *   lof-audio-supply viewer-publish | viewer-verify | viewer-rollback | viewer-recover   [--json]
  */
 
 declare(strict_types=1);
@@ -68,6 +69,10 @@ const COMMANDS = [
     'probe' => ['json'],
     'show-argv' => ['json'],
     'self-check' => ['json'],
+    'viewer-publish' => ['json'],
+    'viewer-verify' => ['json'],
+    'viewer-rollback' => ['json'],
+    'viewer-recover' => ['json'],
 ];
 
 /**
@@ -204,7 +209,41 @@ try {
                 }
             }
             $result = $runtime->publisher($settings)->publish();
-            emit($result->toArray(), $json);
+            $payload = $result->toArray();
+            $exit = EXIT_OK;
+            // The viewer lane follows a good supply run, under its own lock
+            // acquisition. Its failure never disturbs the supply outcome, but
+            // it is reported and it fails the timer run so it gets noticed.
+            if ($runtime->viewerEnabled()) {
+                try {
+                    $payload['viewer_rendition'] = $runtime->viewerPublisher($settings)->publish();
+                } catch (LofAudioException $e) {
+                    $payload['viewer_rendition'] = ['outcome' => 'failed', 'error_code' => $e->code()];
+                    $exit = $e instanceof IntegrityException ? EXIT_INTEGRITY : EXIT_ERROR;
+                }
+            }
+            emit($payload, $json);
+            exit($exit);
+
+        case 'viewer-publish':
+        case 'viewer-rollback':
+        case 'viewer-recover':
+        case 'viewer-verify':
+            $settings = $runtime->store()->load();
+            if (!$runtime->viewerEnabled()) {
+                emit(['outcome' => 'skipped', 'reason' => 'the viewer-rendition lane is disabled in policy'], $json);
+                exit($command === 'viewer-verify' ? EXIT_INTEGRITY : EXIT_OK);
+            }
+            $supply = $runtime->generations($settings);
+            $supply->initialise();
+            $viewer = $runtime->viewerPublisher($settings);
+            if ($command === 'viewer-verify') {
+                $report = $viewer->verify();
+                emit($report, $json);
+                exit($report['ok'] ? EXIT_OK : EXIT_INTEGRITY);
+            }
+            $outcome = $command === 'viewer-publish' ? $viewer->publish() : ($command === 'viewer-rollback' ? $viewer->rollback() : $viewer->recover());
+            emit($outcome, $json);
             exit(EXIT_OK);
 
         case 'init':

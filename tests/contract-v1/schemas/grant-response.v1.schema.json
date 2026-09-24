@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/grant-response.v1.schema.json",
+  "title": "POST /wp-json/lof-core/v1/audio/grant response body v1 (visitor-visible)",
+  "description": "The token never appears in the body; it is delivered only as the HttpOnly, SameSite=Strict, rid-path-scoped cookie lof_ag. item.title is lof-core Studio/show copy, never a source tag or filename. Always HTTP 200; refusal is ok=false with a reason and FM fallback.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["ok", "reason", "ctx", "media", "expires_at", "renew_at", "server_time", "item", "fallback", "autoplay"],
+      "additionalProperties": false,
+      "properties": {
+        "ok": { "const": true },
+        "reason": { "const": "ok" },
+        "ctx": { "enum": ["current", "next"] },
+        "media": { "type": "string", "pattern": "^/wp-json/lof-core/v1/audio/media/[0-9a-f]{32}$" },
+        "expires_at": { "type": "integer", "minimum": 1 },
+        "renew_at": { "type": "integer", "minimum": 0 },
+        "server_time": { "type": "integer", "minimum": 0 },
+        "item": {
+          "type": "object",
+          "required": ["key", "title"],
+          "additionalProperties": false,
+          "properties": {
+            "key": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+            "title": { "type": "string", "minLength": 1, "maxLength": 120 }
+          }
+        },
+        "fallback": { "const": "fm" },
+        "autoplay": { "const": false }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["ok", "reason", "fallback", "autoplay"],
+      "additionalProperties": false,
+      "properties": {
+        "ok": { "const": false },
+        "reason": {
+          "enum": [
+            "issue_disabled", "issue_publication", "issue_session", "issue_ctx", "issue_nothing_playing",
+            "issue_playhead_stale", "issue_remaining_unknown", "issue_next_not_authoritative", "issue_next_too_early",
+            "issue_unmapped", "issue_unpublished", "issue_next_same_rendition"
+          ]
+        },
+        "fallback": { "const": "fm" },
+        "autoplay": { "const": false }
+      }
+    }
+  ]
+}

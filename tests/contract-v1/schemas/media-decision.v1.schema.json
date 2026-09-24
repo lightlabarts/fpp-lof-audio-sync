@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/media-decision.v1.schema.json",
+  "title": "Bounded media decision/result v1 (lof-core media route)",
+  "description": "The complete decision for one GET/HEAD of /wp-json/lof-core/v1/audio/media/<rid>. Only status and headers (and, for 206 GET, exactly range bytes) reach the visitor; every refusal has an empty body. reason and telemetry are server-side only and never contain a grant, session, path, or source fact.",
+  "type": "object",
+  "required": ["status", "reason", "headers", "range", "spend", "body_sha256", "telemetry"],
+  "additionalProperties": false,
+  "properties": {
+    "status": { "enum": [206, 401, 403, 404, 416, 429, 503] },
+    "reason": {
+      "enum": [
+        "ok",
+        "media_method", "media_cross_origin", "media_id_shape", "media_disabled", "media_publication_unavailable", "media_unpublished",
+        "grant_missing", "grant_malformed", "grant_version", "grant_signature", "grant_rid_mismatch", "grant_wrong_listener",
+        "grant_revoked", "grant_generation", "grant_not_yet_valid", "grant_expired", "grant_wrong_item",
+        "budget_requests", "budget_bytes", "budget_concurrency", "budget_rate",
+        "range_required", "range_unit", "range_multipart", "range_malformed", "range_unsatisfiable"
+      ]
+    },
+    "headers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Accept-Ranges": { "const": "bytes" },
+        "Access-Control-Allow-Origin": { "type": "string", "pattern": "^https://[a-z0-9.-]+(:[0-9]{1,5})?$" },
+        "Cache-Control": { "const": "private, no-store" },
+        "Content-Disposition": { "const": "inline; filename=\"lof-listen.m4a\"" },
+        "Content-Length": { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" },
+        "Content-Range": { "type": "string", "pattern": "^bytes ([0-9]+-[0-9]+|\\*)/[0-9]+$" },
+        "Content-Type": { "const": "audio/mp4" },
+        "Cross-Origin-Resource-Policy": { "const": "same-origin" },
+        "Vary": { "const": "Origin" },
+        "X-Content-Type-Options": { "const": "nosniff" }
+      },
+      "required": ["Cache-Control", "Content-Length", "Cross-Origin-Resource-Policy", "X-Content-Type-Options"]
+    },
+    "range": {
+      "type": ["object", "null"],
+      "required": ["start", "end", "length"],
+      "additionalProperties": false,
+      "properties": {
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 0 },
+        "length": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "spend": {
+      "type": "object",
+      "required": ["requests", "bytes"],
+      "additionalProperties": false,
+      "properties": {
+        "requests": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "bytes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "body_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "telemetry": {
+      "type": "object",
+      "required": ["event", "status", "reason", "ctx", "bytes"],
+      "additionalProperties": false,
+      "properties": {
+        "event": { "const": "lof_audio_media" },
+        "status": { "type": "integer" },
+        "reason": { "type": "string", "pattern": "^[a-z_]+$" },
+        "ctx": { "enum": ["current", "next", null] },
+        "bytes": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

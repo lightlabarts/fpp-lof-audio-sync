@@ -48,6 +48,13 @@ final class Policy
     public readonly int $transferTimeoutSeconds;
     /** Pinned known_hosts file. Host keys are never learned on first use. */
     public readonly string $knownHostsPath;
+    /**
+     * Raw `viewer_rendition` block; validated by Viewer\ViewerConfig when the
+     * lane is used, so a bad block can never stop media supply from loading.
+     *
+     * @var array<string,mixed>
+     */
+    public readonly array $viewerRendition;
 
     /** @param array<string,mixed> $overrides */
     public function __construct(array $overrides = [])
@@ -73,6 +80,10 @@ final class Policy
         $this->maxAssetBytes = (int) $merged['max_asset_bytes'];
         $this->transferTimeoutSeconds = (int) $merged['transfer_timeout_seconds'];
         $this->knownHostsPath = SafePath::normalizeAbsolute((string) $merged['known_hosts_path'], 'known_hosts_path');
+        if (!is_array($merged['viewer_rendition']) || array_is_list($merged['viewer_rendition']) && $merged['viewer_rendition'] !== []) {
+            throw new LofAudioException('policy.bad_viewer_rendition', 'viewer_rendition must be an object.');
+        }
+        $this->viewerRendition = $merged['viewer_rendition'];
     }
 
     /** @return array<string,mixed> */
@@ -126,6 +137,8 @@ final class Policy
             'max_asset_bytes' => 2147483648, // 2 GiB per asset
             'transfer_timeout_seconds' => 3600,
             'known_hosts_path' => self::FPP_MEDIA_ROOT . '/config/lof-audio-known_hosts',
+            // Viewer-rendition lane: disabled unless a root-owned policy turns it on.
+            'viewer_rendition' => [],
         ];
     }
 
@@ -211,6 +224,7 @@ final class Policy
             'allowed_binaries' => $this->allowedBinaries,
             'asset_extensions' => $this->assetExtensions,
             'known_hosts_path' => $this->knownHostsPath,
+            'viewer_rendition' => $this->viewerRendition,
         ];
     }
 }

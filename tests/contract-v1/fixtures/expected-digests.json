@@ -1,0 +1,40 @@
+{
+    "renditions": {
+        "7964cad1adcfebce08cb4ff0f68317f6": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+        "80ebfb410f608193f94af6227279e13d": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+    },
+    "sources": {
+        "Masters/Midnight Overture (MASTER).wav": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+        "Northern_Lights_Theme.mp3": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6"
+    },
+    "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+    "source_map_sha256": "2329031b77e8790993d85a6bf10f305383053c7e1277d124aa1103215f88eaf8",
+    "health_canonical_sha256": "41a444d32d2060bf715a4cf255f343057fd947a69edaffd09ae6832f044f2c00",
+    "grant_tokens_sha256": {
+        "G_CUR_A": "3dd493a00df75c4479feef7975b2a06eacf8b86be768eee88c940eaefc85d5e6",
+        "G_NEXT_B": "bb8a4da1fd35349692e3d8967ce4fedae203d749a33ba894dde2c50f01f869e3",
+        "G_CUR_B": "b9a5b7bc355d5058c63832ef2427e1ed9078b6b83d819bd8074f712717eb5031",
+        "G_PREV_A0": "332e4b088763afe0589ab127a6cd30a0b488a2d39a76107e39cd61e4909f2a82"
+    },
+    "files": {
+        "fixtures/constants.json": "d840c9cb586320df9ae199e6a50ee24cbbe07a721b1cc5fcdf49521fbdc2913a",
+        "fixtures/grants.json": "eb4337732cb341587d21748a05b743d2f4af939958ece9cb083bdaab3b89345b",
+        "fixtures/publication/private-root/source-maps/20260923T020000Z-5e1f0a3c.json": "34ff4af8ca6157082b57a04a4c92791a171e672cd8e02237138fdef60cebdee9",
+        "fixtures/publication/viewer-root/generations/20260923T020000Z-5e1f0a3c/7964cad1adcfebce08cb4ff0f68317f6.m4a": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+        "fixtures/publication/viewer-root/generations/20260923T020000Z-5e1f0a3c/80ebfb410f608193f94af6227279e13d.m4a": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66",
+        "fixtures/publication/viewer-root/health.json": "256403b07cf3edccdbb0dd26d96efd0b9f3083dfd5e3134a63cd622f0e39eb06",
+        "fixtures/publication/viewer-root/manifests/20260923T020000Z-5e1f0a3c.json": "5bb2bee1e8b9b9d820c685eeac1c182ac963fd15196c7922013bc31292be2d13",
+        "schemas/grant-claims.v1.schema.json": "b086a23f6368490c404238c5abe82d9a3be2397c8d27e70121dc88ce9071151a",
+        "schemas/grant-response.v1.schema.json": "a86803733da31b6327f2bebe8cf6faa8484e6090ed05717b882b68453a8c4aeb",
+        "schemas/media-decision.v1.schema.json": "625edcc44c1e02cae3e95e0621a882396d328c33b7ac28ef8e6df57485648d43",
+        "schemas/private-source-map.v1.schema.json": "9d369121f35823e9ef40f1b9a00b720a942c1ece6fe09891cdaefd93750a0692",
+        "schemas/publication-health-pointer.v1.schema.json": "47716f73b0763e6aadea17fb0c805dcac8e7e8573507db61b6dc799bca2be366",
+        "schemas/viewer-rendition-manifest.v1.schema.json": "066873979ae405cb034fd72389e54268e6e199d3eebc98b6838949869a75ad90",
+        "tools/build.php": "7560602bc7c3a2e41fca24d11755797dad4861b01d02cfb79c71fe2685d76d34",
+        "tools/model.php": "b5f19afd50905bdaed9e371e1ad58d1552395fe825fe403c0f4f82115aaca4ae",
+        "vectors/documents.json": "64c09525a29a6f9e9146609b5c538ad1be23fe05b43f75781ba130b421679182",
+        "vectors/issue.json": "abede314f1fa201da8abc877161a42901835bcedca187e47f828438b628e3829",
+        "vectors/media.json": "5bd72518fa414079ba6b145309acb574b0587039d3e099a147ce75b8fc602225",
+        "vectors/range-probes.json": "1697b29adc9ef81d7b8f5caffbd03ea565a59499d9240b67e88968484acab4a6"
+    }
+}

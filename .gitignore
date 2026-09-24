@@ -9,3 +9,8 @@ generations/
 staging/
 quarantine/
 health.json
+
+# The frozen phone-audio contract V1 is vendored byte-for-byte for the tests;
+# its fixture publication is test data, not published media.
+!tests/contract-v1/fixtures/publication/viewer-root/health.json
+!tests/contract-v1/fixtures/publication/viewer-root/generations/

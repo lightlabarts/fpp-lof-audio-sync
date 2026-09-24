@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/private-source-map.v1.schema.json",
+  "title": "Private source map v1 (producer: fpp-lof-audio-sync; reader: publisher and lof-core controlled server path only)",
+  "description": "<private_root>/source-maps/<generation>.json, outside every web root and outside <viewer_root>. NEVER visitor-visible: never in a response, URL, error, client state, or visitor-visible log. map_sha256 = sha256(canonical(document without map_sha256)). source_rel follows SafePath::assertRelative; lof-core compares it as an exact byte string and never uses it as a filesystem path.",
+  "type": "object",
+  "required": ["source_map_version", "role", "component", "generation", "created_utc", "algorithm", "profile_id", "rid_key_id", "supply_generation", "supply_manifest_sha256", "viewer_manifest_sha256", "entries", "map_sha256"],
+  "additionalProperties": false,
+  "properties": {
+    "source_map_version": { "const": 1 },
+    "role": { "const": "private-source-map" },
+    "component": { "const": "fpp-lof-audio-sync" },
+    "generation": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$" },
+    "created_utc": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "algorithm": { "const": "sha256" },
+    "profile_id": { "const": "lof-viewer-aac-lc-m4a-v1" },
+    "rid_key_id": { "type": "string", "pattern": "^[a-z0-9-]{1,32}$" },
+    "supply_generation": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$" },
+    "supply_manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "viewer_manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "entries": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 10000,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9a-f]{32}$": {
+          "type": "object",
+          "required": ["source_rel", "source_size", "source_sha256", "rendition_size", "rendition_sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "source_rel": { "type": "string", "minLength": 1, "maxLength": 4096 },
+            "source_size": { "type": "integer", "minimum": 1 },
+            "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "rendition_size": { "type": "integer", "minimum": 1, "maximum": 268435456 },
+            "rendition_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    },
+    "map_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

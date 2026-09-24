@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/publication-health-pointer.v1.schema.json",
+  "title": "Viewer publication health pointer v1 (producer: fpp-lof-audio-sync; consumer: lof-core, read-only)",
+  "description": "<viewer_root>/health.json, written last and atomically: the single commit point of a viewer publication. Carries no paths, hosts, or source facts. Only state=ok with a non-null current is servable.",
+  "type": "object",
+  "required": ["health_version", "component", "role", "generated_utc", "state", "current", "previous_generation"],
+  "additionalProperties": false,
+  "properties": {
+    "health_version": { "const": 1 },
+    "component": { "const": "fpp-lof-audio-sync" },
+    "role": { "const": "viewer-rendition" },
+    "generated_utc": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "state": { "enum": ["ok", "degraded", "failed"] },
+    "current": {
+      "type": ["object", "null"],
+      "required": ["generation", "manifest_sha256", "asset_count", "total_bytes", "profile_id"],
+      "additionalProperties": false,
+      "properties": {
+        "generation": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$" },
+        "manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "asset_count": { "type": "integer", "minimum": 1, "maximum": 10000 },
+        "total_bytes": { "type": "integer", "minimum": 1 },
+        "profile_id": { "const": "lof-viewer-aac-lc-m4a-v1" }
+      }
+    },
+    "previous_generation": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$"
+    }
+  }
+}

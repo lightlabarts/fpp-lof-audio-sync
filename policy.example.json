@@ -32,5 +32,18 @@
 	"min_quarantine_retention_days": 1,
 	"max_quarantine_retention_days": 365,
 	"max_asset_bytes": 2147483648,
-	"transfer_timeout_seconds": 3600
+	"transfer_timeout_seconds": 3600,
+
+	"_viewer_rendition_comment": "The viewer-rendition lane (README: Viewer rendition lane). Disabled unless enabled here. The encoder must also be listed in allowed_binaries. Both roots must be outside every web root, outside the music/upload roots, the media-supply root and the key roots, and disjoint from each other. The rid key file holds 64 lowercase hex characters, mode 0600, inside a key root.",
+	"viewer_rendition": {
+		"enabled": false,
+		"viewer_root": "/home/fpp/media/lof-viewer-rendition",
+		"private_root": "/home/fpp/media/lof-viewer-private",
+		"rid_key_path": "/home/fpp/media/config/lof-viewer-rid.key",
+		"rid_key_id": "fpp-r1",
+		"encoder": "/usr/bin/ffmpeg",
+		"retain_generations": 3,
+		"encode_timeout_seconds": 600,
+		"public_web_roots": ["/opt/fpp/www", "/var/www", "/srv/www", "/usr/share/nginx", "/usr/share/apache2"]
+	}
 }

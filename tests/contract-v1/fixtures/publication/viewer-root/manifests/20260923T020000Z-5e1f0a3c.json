@@ -1,0 +1,31 @@
+{
+    "algorithm": "sha256",
+    "asset_count": 2,
+    "component": "fpp-lof-audio-sync",
+    "created_utc": "2026-09-23T02:00:00Z",
+    "generation": "20260923T020000Z-5e1f0a3c",
+    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+    "manifest_version": 1,
+    "profile": {
+        "bitrate_bps": 128000,
+        "channels": 2,
+        "codec": "aac-lc",
+        "container": "m4a",
+        "metadata": "stripped",
+        "mime": "audio/mp4",
+        "profile_id": "lof-viewer-aac-lc-m4a-v1",
+        "sample_rate_hz": 44100
+    },
+    "renditions": {
+        "7964cad1adcfebce08cb4ff0f68317f6": {
+            "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+            "size": 24576
+        },
+        "80ebfb410f608193f94af6227279e13d": {
+            "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66",
+            "size": 20480
+        }
+    },
+    "role": "viewer-rendition",
+    "total_bytes": 45056
+}

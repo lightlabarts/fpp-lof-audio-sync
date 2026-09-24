@@ -1,0 +1,2196 @@
+{
+    "label": "consumer pipeline: health -> manifest -> publication -> source_map -> observation; first failure wins; \"base\" = the valid fixture document",
+    "vectors": [
+        {
+            "id": "health_version_2",
+            "covers": "version",
+            "health": {
+                "health_version": 2,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_version"
+            }
+        },
+        {
+            "id": "health_version_string",
+            "covers": "version",
+            "health": {
+                "health_version": "1",
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_version"
+            }
+        },
+        {
+            "id": "health_carries_publication_root",
+            "covers": "source/path leak",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21",
+                "publication_root": "/home/fpp/media/lof-audio-viewer"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_source_leak"
+            }
+        },
+        {
+            "id": "media_supply_health_read_as_viewer",
+            "covers": "role confusion",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "media-supply",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_component"
+            }
+        },
+        {
+            "id": "health_generation_shape",
+            "covers": "generation",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "latest",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_generation"
+            }
+        },
+        {
+            "id": "health_extra_field",
+            "covers": "schema",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21",
+                "manifest_error": "unreadable"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_schema"
+            }
+        },
+        {
+            "id": "health_degraded",
+            "covers": "fail closed",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "degraded",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_state"
+            }
+        },
+        {
+            "id": "health_no_current",
+            "covers": "fail closed",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": null,
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "health",
+                "reason": "health_no_current"
+            }
+        },
+        {
+            "id": "health_digest_mismatch",
+            "covers": "health digest",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "publication",
+                "reason": "publication_health_digest"
+            }
+        },
+        {
+            "id": "health_points_elsewhere",
+            "covers": "generation",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260924T020000Z-77c0d9aa",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "publication",
+                "reason": "publication_generation_drift"
+            }
+        },
+        {
+            "id": "health_counter_mismatch",
+            "covers": "size drift",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                    "asset_count": 3,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": "base",
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "publication",
+                "reason": "publication_health_counter"
+            }
+        },
+        {
+            "id": "manifest_version_2",
+            "covers": "version",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 2,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "bbb92238deb2b515385337cc7762cd21c77a56867bdb6806abe6018168c9d946"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_version"
+            }
+        },
+        {
+            "id": "manifest_version_string",
+            "covers": "version",
+            "health": "base",
+            "manifest": {
+                "manifest_version": "1",
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_version"
+            }
+        },
+        {
+            "id": "manifest_algorithm_sha1",
+            "covers": "algorithm",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha1",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "67b226cba6f5769b8fef58fd3ee478efe7120a689ea3f7c65801c2277ef5944d"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_algorithm"
+            }
+        },
+        {
+            "id": "manifest_generation_shape",
+            "covers": "generation",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "2026-09-23",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "88fbfcee8854da24f99b9c0db440ad5a36fceae394f883f63ea3e9d651646c0e"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_generation"
+            }
+        },
+        {
+            "id": "manifest_self_digest_stale",
+            "covers": "self-digest",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:01Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_digest"
+            }
+        },
+        {
+            "id": "manifest_self_digest_forged",
+            "covers": "self-digest",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_digest"
+            }
+        },
+        {
+            "id": "manifest_counter_forged",
+            "covers": "size drift",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 3,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "123fb464dd9f156db84a4a46bf7d20f3511dc64ea8f745af8b6ae4c9100ca2c5"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_counter"
+            }
+        },
+        {
+            "id": "manifest_total_bytes_forged",
+            "covers": "size drift",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 1,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "9643e69d7bee50c8eeac7caefd9bde6b4e6e15c7e45759470c75e0b0c392ee30"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_counter"
+            }
+        },
+        {
+            "id": "manifest_id_is_filename",
+            "covers": "path/id shape; source-name leak",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "Midnight Overture (MASTER).wav": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "76c196eca5067789d439d0be1b4d05730344bdf93d19d069eb1508cdc4faa19c"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_rendition_id"
+            }
+        },
+        {
+            "id": "manifest_id_traversal",
+            "covers": "path traversal declaration",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "../../etc/passwd": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "0076a5def6072b2e1dfd43893da31b8081674a1d67d8ef50313bbb4fc2ae10cb"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_rendition_id"
+            }
+        },
+        {
+            "id": "manifest_id_uppercase",
+            "covers": "path/id shape",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "7964CAD1ADCFEBCE08CB4FF0F68317F6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "2610bf69c81c631ca486991ec12ccac825c8ad39407587794bc5efcc16576d15"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_rendition_id"
+            }
+        },
+        {
+            "id": "manifest_id_short",
+            "covers": "path/id shape (<128 bits)",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "7964cad1adcfebce08cb4ff0f68317f": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "1782a89448b9e5465f9b6dd8cc9a53b9f2c86c685b7ba7ecc7418c0ff80b139b"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_rendition_id"
+            }
+        },
+        {
+            "id": "manifest_id_with_extension",
+            "covers": "path/id shape",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "6aa8fbc961c6ed41592657960e14a6410c13b78599ed721df3915637672ac0c8"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_rendition_id"
+            }
+        },
+        {
+            "id": "manifest_entry_source_rel",
+            "covers": "source-name leak",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "899452f941bafb0b14a349cbd6598a19c4dd03be730796b85c3cb7748d6246d4"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_source_leak"
+            }
+        },
+        {
+            "id": "manifest_title_field",
+            "covers": "title/artist leak",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "acc08798727c15cd367e81a7df9720cbff6e7204b8fdf8e5742febc1028c5c76",
+                "title": "Overture at Midnight"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_source_leak"
+            }
+        },
+        {
+            "id": "manifest_artist_field",
+            "covers": "title/artist leak",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66",
+                        "artist": "Someone"
+                    }
+                },
+                "manifest_sha256": "67d4c23919ba7415c1b9d7d100faa88ec76acca802c6e3a171da3bc65d16eabf"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_source_leak"
+            }
+        },
+        {
+            "id": "media_supply_manifest_read_as_viewer",
+            "covers": "source-name leak; role confusion (fpp-lof-audio-sync@588418f media-supply manifest shape)",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "source_root": "/home/fpp/media/music",
+                "algorithm": "sha256",
+                "asset_count": 1,
+                "total_bytes": 61440,
+                "assets": {
+                    "Masters/Midnight Overture (MASTER).wav": {
+                        "size": 61440,
+                        "sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f"
+                    }
+                },
+                "manifest_sha256": "da44417c6341f9097c13ed80d378c38d9a5fd376542a9e4f2e5f2e0c039b58c9"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_source_leak"
+            }
+        },
+        {
+            "id": "manifest_role_media_supply",
+            "covers": "role confusion",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "media-supply",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "95fb10e8b3a6f0302dfedaef5f75ae5f09566a9dc23ee26f3786f33898190da1"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_role"
+            }
+        },
+        {
+            "id": "manifest_second_codec",
+            "covers": "single codec/profile only",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "opus",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "7efdec0c3ae103e53ce09e2c32f4eb400c0dec24c5aafa03cb73e0e6cc954f3c"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_schema"
+            }
+        },
+        {
+            "id": "manifest_zero_size",
+            "covers": "size drift",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 20480,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 0,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "fef2d98723356011d6c22d334ab1ee4eb0c6f1228ab1169879c4369643d8822a"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_schema"
+            }
+        },
+        {
+            "id": "manifest_upper_hex_digest",
+            "covers": "digest shape",
+            "health": "base",
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "size": 24576,
+                        "sha256": "D74704CE3A65CF87CB80969C63BF6F032780201563DFDBEFA6DD571C76399E79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "manifest_sha256": "809442427a384d91b268e106249f85ce31d3252eb01306d3c7a91a52a6b47a47"
+            },
+            "source_map": "base",
+            "observation": "base",
+            "expect": {
+                "stage": "manifest",
+                "reason": "manifest_schema"
+            }
+        },
+        {
+            "id": "source_map_missing",
+            "covers": "fail closed",
+            "health": "base",
+            "manifest": "base",
+            "source_map": null,
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_missing"
+            }
+        },
+        {
+            "id": "source_map_version_2",
+            "covers": "version",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 2,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "d061425659f548bc06da50f55c1f39aa8401457fc9277fe47b278b11481e4e3a"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_version"
+            }
+        },
+        {
+            "id": "source_map_role",
+            "covers": "role confusion",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "4a6f2d09e1c493b065e0bc53741e3eb01c7d164d7fae9e67d95ef41a1a71e836"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_role"
+            }
+        },
+        {
+            "id": "source_map_algorithm",
+            "covers": "algorithm",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "md5",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "16c3d062ad653082a893d70f52c054cfb956fab9cac7fa6bf44a4a8490653ba6"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_algorithm"
+            }
+        },
+        {
+            "id": "source_map_traversal",
+            "covers": "path traversal declaration",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "../../etc/shadow",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "152e52fc9ecb793e030e629449198a696604e4abd98c0a7a563a1a1b5c432561"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_path"
+            }
+        },
+        {
+            "id": "source_map_absolute",
+            "covers": "path declaration",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "/home/fpp/media/music/x.wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "7d45b057160d9d1f938daf28dc57fb360d44202e9e236c75b0a4f51f018ee092"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_path"
+            }
+        },
+        {
+            "id": "source_map_option_like",
+            "covers": "path declaration",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "-rf.wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "a2bd9993aa6c13bec25dc178ac644a7bb3a8bf6711ae40950a39f56421401266"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_path"
+            }
+        },
+        {
+            "id": "source_map_other_generation",
+            "covers": "generation",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260922T020000Z-0b7d3e21",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "d2f986a7b9eb947007c9a4b3206e35b5f43fedeca1b195c0ae611d8bb6a4aa19"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_generation"
+            }
+        },
+        {
+            "id": "source_map_other_manifest",
+            "covers": "digest binding",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "e2411c55135d3d26facf9a8215dd3278c75ea30b03caa8b8e6a2aefe9a2ff86b"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_manifest_digest"
+            }
+        },
+        {
+            "id": "source_map_self_digest_stale",
+            "covers": "self-digest",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:01Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "2329031b77e8790993d85a6bf10f305383053c7e1277d124aa1103215f88eaf8"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_digest"
+            }
+        },
+        {
+            "id": "source_map_missing_entry",
+            "covers": "coverage",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "map_sha256": "c61de35986880a5d9719614b06f79bacb88fa096000d96adaf1ecf3a116a31c7"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_coverage"
+            }
+        },
+        {
+            "id": "source_map_rendition_size_drift",
+            "covers": "size drift",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24577,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "85009ede728a616fe2207f0b97c6613df6738545adbcc1ece1e1f3b83a45fbfb"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_rendition_drift"
+            }
+        },
+        {
+            "id": "source_map_rendition_digest_drift",
+            "covers": "digest drift",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "bc912d151d6a633208bc8f1b086de345d62e06be60c4d767a91f0e81c3854c8a"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_rendition_drift"
+            }
+        },
+        {
+            "id": "source_map_duplicate_source",
+            "covers": "one source, one rendition",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "916496067fbe3cd5fdd1f20d70a666c2f7dda26f795775b3d80fbaa02291aff2"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_duplicate_source"
+            }
+        },
+        {
+            "id": "source_map_not_transcoded",
+            "covers": "master reached viewer tree",
+            "health": "base",
+            "manifest": "base",
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "903dea47dc8f5b9717c02177787bf49768b1a89b470d2d46e31c6b3bf4692e33",
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                },
+                "map_sha256": "07d0edc38e69820df9a04578656458ba8963361efaa52ef25beb7cd1edb9d2f9"
+            },
+            "observation": "base",
+            "expect": {
+                "stage": "source_map",
+                "reason": "source_map_not_transcoded"
+            }
+        },
+        {
+            "id": "rid_is_source_hash",
+            "covers": "opaque id is not a source hash or reversible filename encoding",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "d62b3b7dab0a62f47fc3546a08210cfa6993b17f4256c111860f31b781016408",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "5541910bb8c2068397e0421b87340543": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "d62b3b7dab0a62f47fc3546a08210cfa6993b17f4256c111860f31b781016408"
+            },
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "d62b3b7dab0a62f47fc3546a08210cfa6993b17f4256c111860f31b781016408",
+                "entries": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "5541910bb8c2068397e0421b87340543": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "map_sha256": "47b522f54f705ffa47729f669e8451bfddca3c86e4988dbefaa38f00c8189b5d"
+            },
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "5541910bb8c2068397e0421b87340543.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "source_map",
+                "reason": "rid_derivable"
+            }
+        },
+        {
+            "id": "rid_is_hex_filename",
+            "covers": "opaque id is not a source hash or reversible filename encoding",
+            "health": {
+                "health_version": 1,
+                "component": "fpp-lof-audio-sync",
+                "role": "viewer-rendition",
+                "generated_utc": "2026-09-23T02:00:07Z",
+                "state": "ok",
+                "current": {
+                    "generation": "20260923T020000Z-5e1f0a3c",
+                    "manifest_sha256": "85aeda7b0437adec4b6edea94d1dfcd70f8a6eb474ec4bb6bd58ea270fd59aec",
+                    "asset_count": 2,
+                    "total_bytes": 45056,
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1"
+                },
+                "previous_generation": "20260922T020000Z-0b7d3e21"
+            },
+            "manifest": {
+                "manifest_version": 1,
+                "role": "viewer-rendition",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile": {
+                    "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                    "container": "m4a",
+                    "mime": "audio/mp4",
+                    "codec": "aac-lc",
+                    "channels": 2,
+                    "sample_rate_hz": 44100,
+                    "bitrate_bps": 128000,
+                    "metadata": "stripped"
+                },
+                "asset_count": 2,
+                "total_bytes": 45056,
+                "renditions": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "4d69646e69676874204f766572747572": {
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "manifest_sha256": "85aeda7b0437adec4b6edea94d1dfcd70f8a6eb474ec4bb6bd58ea270fd59aec"
+            },
+            "source_map": {
+                "source_map_version": 1,
+                "role": "private-source-map",
+                "component": "fpp-lof-audio-sync",
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "created_utc": "2026-09-23T02:00:00Z",
+                "algorithm": "sha256",
+                "profile_id": "lof-viewer-aac-lc-m4a-v1",
+                "rid_key_id": "fixture-r1",
+                "supply_generation": "20260923T015500Z-a41c9e07",
+                "supply_manifest_sha256": "04dc6d7e1f6d61bff4bbb1c78f63d925f49965ef2bb61cdb18e2967d4db5ffd8",
+                "viewer_manifest_sha256": "85aeda7b0437adec4b6edea94d1dfcd70f8a6eb474ec4bb6bd58ea270fd59aec",
+                "entries": {
+                    "80ebfb410f608193f94af6227279e13d": {
+                        "source_rel": "Northern_Lights_Theme.mp3",
+                        "source_size": 51200,
+                        "source_sha256": "ffa6c822007f987733aecbb9bef7ad771afd154243eadc131cdfafa15724bcd6",
+                        "rendition_size": 20480,
+                        "rendition_sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "4d69646e69676874204f766572747572": {
+                        "source_rel": "Masters/Midnight Overture (MASTER).wav",
+                        "source_size": 61440,
+                        "source_sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f",
+                        "rendition_size": 24576,
+                        "rendition_sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                },
+                "map_sha256": "16f986185acba9ca23a7ea16f7d084cee2e0661b1423dd66c5ee0accfbfa8405"
+            },
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "4d69646e69676874204f766572747572.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "source_map",
+                "reason": "rid_derivable"
+            }
+        },
+        {
+            "id": "viewer_root_under_web_root",
+            "covers": "static-server bypass",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": true,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "publication_root_public"
+            }
+        },
+        {
+            "id": "rendition_is_symlink",
+            "covers": "symlink declaration",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "symlink",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_symlink"
+            }
+        },
+        {
+            "id": "rendition_escapes_root",
+            "covers": "path traversal (realpath escape)",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": false,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_outside_root"
+            }
+        },
+        {
+            "id": "rendition_size_drift",
+            "covers": "size drift",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24000,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_size_drift"
+            }
+        },
+        {
+            "id": "rendition_digest_drift",
+            "covers": "digest drift",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d121be3103007b41edf96f8262925f8c7d61894afe9a041843b631f69445bc57"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_digest_drift"
+            }
+        },
+        {
+            "id": "rendition_missing",
+            "covers": "partial publication",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_missing"
+            }
+        },
+        {
+            "id": "rendition_is_directory",
+            "covers": "type",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "dir",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_type"
+            }
+        },
+        {
+            "id": "original_master_in_viewer_tree",
+            "covers": "no master beneath viewer root",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    "Midnight Overture (MASTER).wav": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 61440,
+                        "sha256": "5541910bb8c2068397e0421b873405434c54e3c1e35f1c33a0bc1cfe7ca2365f"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_unexpected"
+            }
+        },
+        {
+            "id": "interrupted_generation_marker",
+            "covers": "interrupted publication",
+            "health": "base",
+            "manifest": "base",
+            "source_map": "base",
+            "observation": {
+                "root_public": false,
+                "entries": {
+                    "7964cad1adcfebce08cb4ff0f68317f6.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 24576,
+                        "sha256": "d74704ce3a65cf87cb80969c63bf6f032780201563dfdbefa6dd571c76399e79"
+                    },
+                    "80ebfb410f608193f94af6227279e13d.m4a": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 20480,
+                        "sha256": "ad7b7e26518340bda5ea1ed2d0e475485c665f175b6a79b0b2182ac858ff4c66"
+                    },
+                    ".incomplete": {
+                        "type": "file",
+                        "within_root": true,
+                        "size": 64,
+                        "sha256": "ed5b8120601641c516d02ed9dc643a59648524248d5e2af877da39ea253c723e"
+                    }
+                }
+            },
+            "expect": {
+                "stage": "observation",
+                "reason": "file_unexpected"
+            }
+        }
+    ]
+}

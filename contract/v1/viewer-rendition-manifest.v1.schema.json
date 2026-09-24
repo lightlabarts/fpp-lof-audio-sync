@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/viewer-rendition-manifest.v1.schema.json",
+  "title": "Viewer rendition manifest v1 (producer: fpp-lof-audio-sync; consumer: lof-core, read-only)",
+  "description": "<viewer_root>/manifests/<generation>.json. Visitor-safe: rendition ids and delivery facts only. manifest_sha256 = sha256(canonical(document without manifest_sha256)). asset_count and total_bytes are derived and compared, never trusted.",
+  "type": "object",
+  "required": ["manifest_version", "role", "component", "generation", "created_utc", "algorithm", "profile", "asset_count", "total_bytes", "renditions", "manifest_sha256"],
+  "additionalProperties": false,
+  "properties": {
+    "manifest_version": { "const": 1 },
+    "role": { "const": "viewer-rendition" },
+    "component": { "const": "fpp-lof-audio-sync" },
+    "generation": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$" },
+    "created_utc": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "algorithm": { "const": "sha256" },
+    "profile": {
+      "const": {
+        "profile_id": "lof-viewer-aac-lc-m4a-v1",
+        "container": "m4a",
+        "mime": "audio/mp4",
+        "codec": "aac-lc",
+        "channels": 2,
+        "sample_rate_hz": 44100,
+        "bitrate_bps": 128000,
+        "metadata": "stripped"
+      }
+    },
+    "asset_count": { "type": "integer", "minimum": 1, "maximum": 10000 },
+    "total_bytes": { "type": "integer", "minimum": 1 },
+    "renditions": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 10000,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9a-f]{32}$": {
+          "type": "object",
+          "required": ["size", "sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "size": { "type": "integer", "minimum": 1, "maximum": 268435456 },
+            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    },
+    "manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

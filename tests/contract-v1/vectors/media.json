@@ -1,0 +1,2860 @@
+{
+    "label": "GET|HEAD /wp-json/lof-core/v1/audio/media/<rid>",
+    "media_base": {
+        "now": 1790129401,
+        "disabled": false,
+        "publication_ok": true,
+        "generation": "20260923T020000Z-5e1f0a3c",
+        "epoch": 7,
+        "revoked_jti": [],
+        "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+        "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+        "usage": []
+    },
+    "vectors": [
+        {
+            "id": "ok_safari_probe",
+            "covers": "Safari first probe bytes=0-1",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "2",
+                    "Content-Range": "bytes 0-1/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 1,
+                    "length": 2
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 2
+                },
+                "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 2
+                }
+            }
+        },
+        {
+            "id": "ok_open_ended_is_windowed",
+            "covers": "bytes=0- never authorises the whole entity",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "4096",
+                    "Content-Range": "bytes 0-4095/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 4095,
+                    "length": 4096
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 4096
+                },
+                "body_sha256": "f792af7799fc0179d082b21e7a21fc277d16bb11c24ff6a537a40622c6aef490",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 4096
+                }
+            }
+        },
+        {
+            "id": "ok_bounded_seek",
+            "covers": "seek window",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=10000-10999",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "1000",
+                    "Content-Range": "bytes 10000-10999/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 10000,
+                    "end": 10999,
+                    "length": 1000
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 1000
+                },
+                "body_sha256": "e1891982c69d81bedc243aff28840729e4d47b59b5f4cabc5cd41eb066ce097f",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 1000
+                }
+            }
+        },
+        {
+            "id": "ok_suffix_windowed_from_end",
+            "covers": "iOS trailer read, clamped from the end",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=-5000",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "4096",
+                    "Content-Range": "bytes 20480-24575/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 20480,
+                    "end": 24575,
+                    "length": 4096
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 4096
+                },
+                "body_sha256": "66b137c9f76fe25c4641bf1788705535f6f6b5b1d2f9e4f7023fa99eccfbb572",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 4096
+                }
+            }
+        },
+        {
+            "id": "ok_end_past_entity",
+            "covers": "end clamped to entity",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=24000-99999",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "576",
+                    "Content-Range": "bytes 24000-24575/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 24000,
+                    "end": 24575,
+                    "length": 576
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 576
+                },
+                "body_sha256": "fc167545522d42382fc745deba962a3bd738d5b3fcbd63abddb1d433a751ed7e",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 576
+                }
+            }
+        },
+        {
+            "id": "ok_same_origin_cors",
+            "covers": "same-origin Origin echoed, never *",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin",
+                    "Origin": "https://lights.example.test"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Access-Control-Allow-Origin": "https://lights.example.test",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "2",
+                    "Content-Range": "bytes 0-1/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "Vary": "Origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 1,
+                    "length": 2
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 2
+                },
+                "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 2
+                }
+            }
+        },
+        {
+            "id": "ok_no_fetch_metadata",
+            "covers": "older Safari sends no Sec-Fetch-Site",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "2",
+                    "Content-Range": "bytes 0-1/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 1,
+                    "length": 2
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 2
+                },
+                "body_sha256": "cba2bdde36d2ce98c84779944e469198893d1634a1de0664128254ade47bafca",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 2
+                }
+            }
+        },
+        {
+            "id": "ok_head",
+            "covers": "HEAD spends a request, no bytes",
+            "state": "media_base",
+            "request": {
+                "method": "HEAD",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "2",
+                    "Content-Range": "bytes 0-1/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 1,
+                    "length": 2
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "ok_last_bytes_of_budget",
+            "covers": "window shrinks to remaining byte budget",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": {
+                    "323e32cc5b6612447fb01b1a1bd3e923": {
+                        "requests": 10,
+                        "bytes": 44956,
+                        "in_flight": 0,
+                        "recent": []
+                    }
+                }
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 206,
+                "reason": "ok",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Disposition": "inline; filename=\"lof-listen.m4a\"",
+                    "Content-Length": "100",
+                    "Content-Range": "bytes 0-99/24576",
+                    "Content-Type": "audio/mp4",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": {
+                    "start": 0,
+                    "end": 99,
+                    "length": 100
+                },
+                "spend": {
+                    "requests": 1,
+                    "bytes": 100
+                },
+                "body_sha256": "0262d0abe5254c824ee8106f5286b324b4980af00fb4a313d16867bb1a037406",
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 206,
+                    "reason": "ok",
+                    "ctx": "current",
+                    "bytes": 100
+                }
+            }
+        },
+        {
+            "id": "method_post",
+            "covers": "method",
+            "state": "media_base",
+            "request": {
+                "method": "POST",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_method",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_method",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "cross_origin_origin",
+            "covers": "cross-origin",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin",
+                    "Origin": "https://evil.example"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 403,
+                "reason": "media_cross_origin",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "Vary": "Origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 403,
+                    "reason": "media_cross_origin",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "cross_site_fetch_metadata",
+            "covers": "hotlink",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "cross-site"
+                },
+                "cookies": []
+            },
+            "expect": {
+                "status": 403,
+                "reason": "media_cross_origin",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 403,
+                    "reason": "media_cross_origin",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "direct_navigation",
+            "covers": "save-as / address bar",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "none"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 403,
+                "reason": "media_cross_origin",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 403,
+                    "reason": "media_cross_origin",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "hotlink_without_cookies",
+            "covers": "hotlink (SameSite=Strict withholds cookies)",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1"
+                },
+                "cookies": []
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_missing",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_missing",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "copied_url_other_browser",
+            "covers": "URL reuse without the grant cookie",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": []
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_missing",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_missing",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_raw_source_path",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/Masters/Midnight%20Overture%20(MASTER).wav",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_raw_source_name",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/Northern_Lights_Theme.mp3",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_legacy_asset_route",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/thriller.m4a",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_rid_with_extension",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6.m4a",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_rid_uppercase",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964CAD1ADCFEBCE08CB4FF0F68317F6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_rid_trailing_slash",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6/",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_traversal",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/../../../../wp-config.php",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_encoded_traversal",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/%2e%2e%2fhealth.json",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_directory_listing",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "raw_generation_path",
+            "covers": "raw-path guess -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/generations/20260923T020000Z-5e1f0a3c/7964cad1adcfebce08cb4ff0f68317f6.m4a",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_id_shape",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_id_shape",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "guessed_id_no_grant",
+            "covers": "guessed id -> indistinguishable 404",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/160ecd6b48d3c0e36a3be3407f9c81d8",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": []
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_missing",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_missing",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "guessed_id_with_grant",
+            "covers": "enumeration with a valid grant",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/160ecd6b48d3c0e36a3be3407f9c81d8",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_rid_mismatch",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_rid_mismatch",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "adjacent_id_with_grant",
+            "covers": "adjacent-id guessing",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f7",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_rid_mismatch",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_rid_mismatch",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "other_track_with_grant",
+            "covers": "wrong track: grant for A used on B",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_rid_mismatch",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_rid_mismatch",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "disabled",
+            "covers": "emergency disable",
+            "state": {
+                "now": 1790129401,
+                "disabled": true,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 503,
+                "reason": "media_disabled",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 503,
+                    "reason": "media_disabled",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "publication_unavailable",
+            "covers": "fail closed",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": false,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 503,
+                "reason": "media_publication_unavailable",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 503,
+                    "reason": "media_publication_unavailable",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_truncated",
+            "covers": "malformed",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.abc",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_malformed",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_malformed",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_legacy_a1",
+            "covers": "version (989ea9d5 a1 token shape)",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "a1.1790129700.0123456789abcdef.0123456789abcdef.0123456789abcdef0123456789abcdef",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_malformed",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_malformed",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_prefix_v2",
+            "covers": "version",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg2.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_version",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_version",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_claims_ver_2",
+            "covers": "version",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6Mn0.uFPIG8smVxY-ULLWutikabJb9rXus5mM-GaLsU19ymk",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_version",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_version",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_unknown_kid",
+            "covers": "version/key",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoicmV0aXJlZC1rMCIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.KT9UTrXQoJO5JmqWOstk-iqtxgQ0kBC6dmebqsr-CNc",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_version",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_version",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_signature_flipped",
+            "covers": "forgery",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjAeWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_signature",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_signature",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_other_key",
+            "covers": "forgery",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.INd848ndDdTSOQJDzG7uv8fahUmPAwYfZ3zPG78CMy4",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_signature",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_signature",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_extends_own_budget",
+            "covers": "forgery (edited claims, old MAC)",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjk5OTk5OTk5OSwiY29uYyI6MiwicmF0ZV9uIjoyMCwicmF0ZV9zIjoxMCwicmVxIjoyMDAsIndpbiI6NDA5Nn0sImN0eCI6ImN1cnJlbnQiLCJlcG9jaCI6NywiZXhwIjoxNzkwMTI5NTE4LCJnZW4iOiIyMDI2MDkyM1QwMjAwMDBaLTVlMWYwYTNjIiwiaWF0IjoxNzkwMTI5NDAwLCJpdGVtIjoiYWNmYjk1ZTY4YjAxNmM3YWFhNGM4NzVlMzU1ODdiNjIiLCJqdGkiOiIzMjNlMzJjYzViNjYxMjQ0N2ZiMDFiMWExYmQzZTkyMyIsImtpZCI6ImZpeHR1cmUtZzEiLCJuYmYiOjE3OTAxMjk0MDAsInJpZCI6Ijc5NjRjYWQxYWRjZmViY2UwOGNiNGZmMGY2ODMxN2Y2Iiwic3ViIjoiYjIyZGM4YzVjMGU1ODQxYmU5ZTRmMDkwNjMxODE2ZjIiLCJ0eXAiOiJsb2YtYXVkaW8tZ3JhbnQiLCJ2ZXIiOjF9.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_signature",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_signature",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_carries_path",
+            "covers": "claims schema (no path/source in a grant)",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicGF0aCI6Ik1hc3RlcnMvTWlkbmlnaHQgT3ZlcnR1cmUgKE1BU1RFUikud2F2IiwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.hYCZ_JYBy7Zyh38werLk8iBGwo83UaJR7sC4rXqGDAE",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_malformed",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_malformed",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "grant_ttl_over_ceiling",
+            "covers": "relational claims",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMzEyMDEsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.Bbr5JkbfDDoUY7g-QMbc5ExtHGCcTfErI6qTUqLelMw",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "grant_malformed",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "grant_malformed",
+                    "ctx": null,
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "wrong_listener",
+            "covers": "grant shared with another listener",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-two_9e8d7c6b5a4f3e2d"
+                }
+            },
+            "expect": {
+                "status": 403,
+                "reason": "grant_wrong_listener",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 403,
+                    "reason": "grant_wrong_listener",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "listener_cookie_missing",
+            "covers": "wrong listener",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": ""
+                }
+            },
+            "expect": {
+                "status": 403,
+                "reason": "grant_wrong_listener",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 403,
+                    "reason": "grant_wrong_listener",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "revoked_jti",
+            "covers": "explicit revocation",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [
+                    "323e32cc5b6612447fb01b1a1bd3e923"
+                ],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_revoked",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_revoked",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "revoked_epoch",
+            "covers": "revoke-all / disable cleared",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 8,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_revoked",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_revoked",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "generation_transition",
+            "covers": "generation change kills old grants",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260924T020000Z-77c0d9aa",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_generation",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_generation",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "unpublished_rendition",
+            "covers": "unpublished item",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/f6e6fc8a7deb1ab828d3b3c2f4701a57",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiZjZlNmZjOGE3ZGViMWFiODI4ZDNiM2MyZjQ3MDFhNTciLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.cUX55ZnQwMNqIUjBbOmBbDGIhLW9xHkwjANPxkA2o8g",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 404,
+                "reason": "media_unpublished",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 404,
+                    "reason": "media_unpublished",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "not_yet_valid",
+            "covers": "clock",
+            "state": {
+                "now": 1790129399,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_not_yet_valid",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_not_yet_valid",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "expired_at_boundary",
+            "covers": "expired grant (exp is exclusive)",
+            "state": {
+                "now": 1790129518,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_expired",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_expired",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "previous_item",
+            "covers": "item transition kills old grant",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "next_item": null,
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_wrong_item",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_wrong_item",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "replay_earlier_play_same_rendition",
+            "covers": "previous item (same rid, earlier instance)",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjkzNzksImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjkxNjAsIml0ZW0iOiJiNDNkMWQ0ZjNiMTQyZDBlMjMzNTQwOWYxMWFjOGI5MyIsImp0aSI6ImM4MGZiMzE3N2QzOGQwNTU5YmQxNjQwNDUwY2Q3ODhmIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTE2MCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.zGsTnNPDj6sCTSQHl0r-gFzks1CPX_CwE4ZxS0U4Li8",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_expired",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_expired",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "replay_earlier_play_unexpired",
+            "covers": "previous item (same rid, earlier instance, still inside exp)",
+            "state": {
+                "now": 1790129378,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjkzNzksImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjkxNjAsIml0ZW0iOiJiNDNkMWQ0ZjNiMTQyZDBlMjMzNTQwOWYxMWFjOGI5MyIsImp0aSI6ImM4MGZiMzE3N2QzOGQwNTU5YmQxNjQwNDUwY2Q3ODhmIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTE2MCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.zGsTnNPDj6sCTSQHl0r-gFzks1CPX_CwE4ZxS0U4Li8",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_wrong_item",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_wrong_item",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "next_grant_before_authoritative",
+            "covers": "future item",
+            "state": {
+                "now": 1790129481,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": null,
+                "usage": []
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 401,
+                "reason": "grant_wrong_item",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 401,
+                    "reason": "grant_wrong_item",
+                    "ctx": "next",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "request_budget",
+            "covers": "request budget",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": {
+                    "323e32cc5b6612447fb01b1a1bd3e923": {
+                        "requests": 200,
+                        "bytes": 0,
+                        "in_flight": 0,
+                        "recent": []
+                    }
+                }
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 429,
+                "reason": "budget_requests",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 429,
+                    "reason": "budget_requests",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "byte_budget",
+            "covers": "byte budget",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": {
+                    "323e32cc5b6612447fb01b1a1bd3e923": {
+                        "requests": 12,
+                        "bytes": 45056,
+                        "in_flight": 0,
+                        "recent": []
+                    }
+                }
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 429,
+                "reason": "budget_bytes",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 429,
+                    "reason": "budget_bytes",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "concurrency",
+            "covers": "concurrency",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": {
+                    "323e32cc5b6612447fb01b1a1bd3e923": {
+                        "requests": 2,
+                        "bytes": 2,
+                        "in_flight": 2,
+                        "recent": []
+                    }
+                }
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 429,
+                "reason": "budget_concurrency",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 429,
+                    "reason": "budget_concurrency",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "rate",
+            "covers": "rate",
+            "state": {
+                "now": 1790129401,
+                "disabled": false,
+                "publication_ok": true,
+                "generation": "20260923T020000Z-5e1f0a3c",
+                "epoch": 7,
+                "revoked_jti": [],
+                "current_item": "acfb95e68b016c7aaa4c875e35587b62",
+                "next_item": "647da11ca33fe17ee25bebddd0ddb150",
+                "usage": {
+                    "323e32cc5b6612447fb01b1a1bd3e923": {
+                        "requests": 20,
+                        "bytes": 40,
+                        "in_flight": 0,
+                        "recent": [
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392,
+                            1790129392
+                        ]
+                    }
+                }
+            },
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-1",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 429,
+                "reason": "budget_rate",
+                "headers": {
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 0,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 429,
+                    "reason": "budget_rate",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_absent",
+            "covers": "no whole-entity 200 ever",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_required",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_required",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_unit",
+            "covers": "no whole-entity fallback for unknown unit",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "items=0-10",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_unit",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_unit",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_multipart",
+            "covers": "multipart refused",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=0-99,200-299",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_multipart",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_multipart",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_malformed",
+            "covers": "malformed",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=abc-",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_malformed",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_malformed",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_zero_suffix",
+            "covers": "malformed",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=-0",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_malformed",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_malformed",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_past_end",
+            "covers": "unsatisfiable",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=24576-",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_unsatisfiable",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_unsatisfiable",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        },
+        {
+            "id": "range_reversed",
+            "covers": "unsatisfiable",
+            "state": "media_base",
+            "request": {
+                "method": "GET",
+                "path": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "headers": {
+                    "Range": "bytes=5-2",
+                    "Sec-Fetch-Site": "same-origin"
+                },
+                "cookies": {
+                    "lof_ag": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+                    "lof_as": "listener-one_4f9c2a7b8e1d3c5a"
+                }
+            },
+            "expect": {
+                "status": 416,
+                "reason": "range_unsatisfiable",
+                "headers": {
+                    "Accept-Ranges": "bytes",
+                    "Cache-Control": "private, no-store",
+                    "Content-Length": "0",
+                    "Content-Range": "bytes */24576",
+                    "Cross-Origin-Resource-Policy": "same-origin",
+                    "X-Content-Type-Options": "nosniff"
+                },
+                "range": null,
+                "spend": {
+                    "requests": 1,
+                    "bytes": 0
+                },
+                "body_sha256": null,
+                "telemetry": {
+                    "event": "lof_audio_media",
+                    "status": 416,
+                    "reason": "range_unsatisfiable",
+                    "ctx": "current",
+                    "bytes": 0
+                }
+            }
+        }
+    ]
+}

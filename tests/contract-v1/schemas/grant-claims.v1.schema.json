@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lof-phone-audio-v1/grant-claims.v1.schema.json",
+  "title": "Listening grant claims v1 (issuer and sole verifier: lof-core)",
+  "description": "Token = 'lofg1.' + b64url(canonical(claims)) + '.' + b64url(HMAC-SHA256(grant_key, 'lofg1.' + b64url(canonical(claims)))). Relational rules enforced by the model: iat <= nbf < exp, exp - iat <= 1800, exp = iat + min(max_ttl_s, observed_remaining_now + recovery_margin_s). Carries no session, source name, path, host, or visitor action credential.",
+  "type": "object",
+  "required": ["typ", "ver", "kid", "sub", "rid", "item", "ctx", "gen", "iat", "nbf", "exp", "jti", "epoch", "bud"],
+  "additionalProperties": false,
+  "properties": {
+    "typ": { "const": "lof-audio-grant" },
+    "ver": { "const": 1 },
+    "kid": { "type": "string", "pattern": "^[a-z0-9-]{1,32}$" },
+    "sub": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "rid": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "item": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "ctx": { "enum": ["current", "next"] },
+    "gen": { "type": "string", "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{8}$" },
+    "iat": { "type": "integer", "minimum": 0 },
+    "nbf": { "type": "integer", "minimum": 0 },
+    "exp": { "type": "integer", "minimum": 1 },
+    "jti": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "epoch": { "type": "integer", "minimum": 0 },
+    "bud": {
+      "type": "object",
+      "required": ["req", "bytes", "conc", "rate_n", "rate_s", "win"],
+      "additionalProperties": false,
+      "properties": {
+        "req": { "type": "integer", "minimum": 1, "maximum": 5000 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "conc": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "rate_n": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "rate_s": { "type": "integer", "minimum": 1, "maximum": 60 },
+        "win": { "type": "integer", "minimum": 1, "maximum": 1048576 }
+      }
+    }
+  }
+}

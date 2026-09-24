@@ -24,6 +24,7 @@ require_once __DIR__ . '/../lib/bootstrap.php';
 require_once __DIR__ . '/Harness.php';
 require_once __DIR__ . '/Estate.php';
 require_once __DIR__ . '/Doubles.php';
+require_once __DIR__ . '/ViewerDoubles.php';
 
 use LofTest\AssertionFailed;
 use LofTest\SkipTest;

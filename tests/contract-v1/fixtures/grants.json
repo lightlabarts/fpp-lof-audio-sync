@@ -1,0 +1,293 @@
+{
+    "G_CUR_A": {
+        "note": "current listener L1, item A#1",
+        "state": {
+            "now": 1790129400,
+            "disabled": false,
+            "publication_ok": true,
+            "generation": "20260923T020000Z-5e1f0a3c",
+            "epoch": 7,
+            "next_jti": "323e32cc5b6612447fb01b1a1bd3e923",
+            "current": {
+                "name": "Midnight_Overture.fseq",
+                "title": "Overture at Midnight",
+                "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                "observed_at": 1790129398,
+                "remaining_s": 100
+            },
+            "next": {
+                "name": "Northern_Lights_Theme.fseq",
+                "title": "Aurora Theme",
+                "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                "authoritative": true
+            }
+        },
+        "request": {
+            "session": "listener-one_4f9c2a7b8e1d3c5a",
+            "ctx": "current"
+        },
+        "claims": {
+            "typ": "lof-audio-grant",
+            "ver": 1,
+            "kid": "fixture-g1",
+            "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+            "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+            "item": "acfb95e68b016c7aaa4c875e35587b62",
+            "ctx": "current",
+            "gen": "20260923T020000Z-5e1f0a3c",
+            "iat": 1790129400,
+            "nbf": 1790129400,
+            "exp": 1790129518,
+            "jti": "323e32cc5b6612447fb01b1a1bd3e923",
+            "epoch": 7,
+            "bud": {
+                "req": 200,
+                "bytes": 45056,
+                "conc": 2,
+                "rate_n": 20,
+                "rate_s": 10,
+                "win": 4096
+            }
+        },
+        "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ",
+        "response": {
+            "status": 200,
+            "body": {
+                "ok": true,
+                "reason": "ok",
+                "ctx": "current",
+                "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "expires_at": 1790129518,
+                "renew_at": 1790129503,
+                "server_time": 1790129400,
+                "item": {
+                    "key": "acfb95e68b016c7aaa4c875e35587b62",
+                    "title": "Overture at Midnight"
+                },
+                "fallback": "fm",
+                "autoplay": false
+            },
+            "set_cookie": [
+                "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk1MTgsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk0MDAsIml0ZW0iOiJhY2ZiOTVlNjhiMDE2YzdhYWE0Yzg3NWUzNTU4N2I2MiIsImp0aSI6IjMyM2UzMmNjNWI2NjEyNDQ3ZmIwMWIxYTFiZDNlOTIzIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTQwMCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.OpSG3cqvBNeNTXeyXdqEVFnyHzAeS8zi3mngTjseWBQ; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=118; Secure; HttpOnly; SameSite=Strict",
+                "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+            ]
+        }
+    },
+    "G_NEXT_B": {
+        "note": "bounded next-item preparation, item B#1",
+        "state": {
+            "now": 1790129480,
+            "disabled": false,
+            "publication_ok": true,
+            "generation": "20260923T020000Z-5e1f0a3c",
+            "epoch": 7,
+            "next_jti": "1475813e5e3800a5ae3e91d32839547c",
+            "current": {
+                "name": "Midnight_Overture.fseq",
+                "title": "Overture at Midnight",
+                "item_id": "acfb95e68b016c7aaa4c875e35587b62",
+                "observed_at": 1790129479,
+                "remaining_s": 20
+            },
+            "next": {
+                "name": "Northern_Lights_Theme.fseq",
+                "title": "Aurora Theme",
+                "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                "authoritative": true
+            }
+        },
+        "request": {
+            "session": "listener-one_4f9c2a7b8e1d3c5a",
+            "ctx": "next"
+        },
+        "claims": {
+            "typ": "lof-audio-grant",
+            "ver": 1,
+            "kid": "fixture-g1",
+            "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+            "rid": "80ebfb410f608193f94af6227279e13d",
+            "item": "647da11ca33fe17ee25bebddd0ddb150",
+            "ctx": "next",
+            "gen": "20260923T020000Z-5e1f0a3c",
+            "iat": 1790129480,
+            "nbf": 1790129480,
+            "exp": 1790129519,
+            "jti": "1475813e5e3800a5ae3e91d32839547c",
+            "epoch": 7,
+            "bud": {
+                "req": 8,
+                "bytes": 8192,
+                "conc": 1,
+                "rate_n": 8,
+                "rate_s": 10,
+                "win": 4096
+            }
+        },
+        "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8",
+        "response": {
+            "status": 200,
+            "body": {
+                "ok": true,
+                "reason": "ok",
+                "ctx": "next",
+                "media": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                "expires_at": 1790129519,
+                "renew_at": 1790129504,
+                "server_time": 1790129480,
+                "item": {
+                    "key": "647da11ca33fe17ee25bebddd0ddb150",
+                    "title": "Aurora Theme"
+                },
+                "fallback": "fm",
+                "autoplay": false
+            },
+            "set_cookie": [
+                "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjgxOTIsImNvbmMiOjEsInJhdGVfbiI6OCwicmF0ZV9zIjoxMCwicmVxIjo4LCJ3aW4iOjQwOTZ9LCJjdHgiOiJuZXh0IiwiZXBvY2giOjcsImV4cCI6MTc5MDEyOTUxOSwiZ2VuIjoiMjAyNjA5MjNUMDIwMDAwWi01ZTFmMGEzYyIsImlhdCI6MTc5MDEyOTQ4MCwiaXRlbSI6IjY0N2RhMTFjYTMzZmUxN2VlMjViZWJkZGQwZGRiMTUwIiwianRpIjoiMTQ3NTgxM2U1ZTM4MDBhNWFlM2U5MWQzMjgzOTU0N2MiLCJraWQiOiJmaXh0dXJlLWcxIiwibmJmIjoxNzkwMTI5NDgwLCJyaWQiOiI4MGViZmI0MTBmNjA4MTkzZjk0YWY2MjI3Mjc5ZTEzZCIsInN1YiI6ImIyMmRjOGM1YzBlNTg0MWJlOWU0ZjA5MDYzMTgxNmYyIiwidHlwIjoibG9mLWF1ZGlvLWdyYW50IiwidmVyIjoxfQ.ZVeBQ3hY_G4nRPkrPcqyrR72S6rHGVBQYANxHrD6K_8; Path=/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d; Max-Age=39; Secure; HttpOnly; SameSite=Strict",
+                "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+            ]
+        }
+    },
+    "G_CUR_B": {
+        "note": "after the A->B transition",
+        "state": {
+            "now": 1790129500,
+            "disabled": false,
+            "publication_ok": true,
+            "generation": "20260923T020000Z-5e1f0a3c",
+            "epoch": 7,
+            "next_jti": "f4dd9710e022e082fb79bf7cf283edfa",
+            "current": {
+                "name": "Northern_Lights_Theme.fseq",
+                "title": "Aurora Theme",
+                "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                "observed_at": 1790129500,
+                "remaining_s": 212
+            },
+            "next": null
+        },
+        "request": {
+            "session": "listener-one_4f9c2a7b8e1d3c5a",
+            "ctx": "current"
+        },
+        "claims": {
+            "typ": "lof-audio-grant",
+            "ver": 1,
+            "kid": "fixture-g1",
+            "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+            "rid": "80ebfb410f608193f94af6227279e13d",
+            "item": "647da11ca33fe17ee25bebddd0ddb150",
+            "ctx": "current",
+            "gen": "20260923T020000Z-5e1f0a3c",
+            "iat": 1790129500,
+            "nbf": 1790129500,
+            "exp": 1790129732,
+            "jti": "f4dd9710e022e082fb79bf7cf283edfa",
+            "epoch": 7,
+            "bud": {
+                "req": 200,
+                "bytes": 38912,
+                "conc": 2,
+                "rate_n": 20,
+                "rate_s": 10,
+                "win": 4096
+            }
+        },
+        "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjM4OTEyLCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MzIsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk1MDAsIml0ZW0iOiI2NDdkYTExY2EzM2ZlMTdlZTI1YmViZGRkMGRkYjE1MCIsImp0aSI6ImY0ZGQ5NzEwZTAyMmUwODJmYjc5YmY3Y2YyODNlZGZhIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTUwMCwicmlkIjoiODBlYmZiNDEwZjYwODE5M2Y5NGFmNjIyNzI3OWUxM2QiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.JMLkV3G86EeIiDRm8vWXmeIclJHsbz2VusJpUzpMZfE",
+        "response": {
+            "status": 200,
+            "body": {
+                "ok": true,
+                "reason": "ok",
+                "ctx": "current",
+                "media": "/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d",
+                "expires_at": 1790129732,
+                "renew_at": 1790129717,
+                "server_time": 1790129500,
+                "item": {
+                    "key": "647da11ca33fe17ee25bebddd0ddb150",
+                    "title": "Aurora Theme"
+                },
+                "fallback": "fm",
+                "autoplay": false
+            },
+            "set_cookie": [
+                "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjM4OTEyLCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjk3MzIsImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjk1MDAsIml0ZW0iOiI2NDdkYTExY2EzM2ZlMTdlZTI1YmViZGRkMGRkYjE1MCIsImp0aSI6ImY0ZGQ5NzEwZTAyMmUwODJmYjc5YmY3Y2YyODNlZGZhIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTUwMCwicmlkIjoiODBlYmZiNDEwZjYwODE5M2Y5NGFmNjIyNzI3OWUxM2QiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.JMLkV3G86EeIiDRm8vWXmeIclJHsbz2VusJpUzpMZfE; Path=/wp-json/lof-core/v1/audio/media/80ebfb410f608193f94af6227279e13d; Max-Age=232; Secure; HttpOnly; SameSite=Strict",
+                "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+            ]
+        }
+    },
+    "G_PREV_A0": {
+        "note": "an earlier play of the same rendition (replay source)",
+        "state": {
+            "now": 1790129160,
+            "disabled": false,
+            "publication_ok": true,
+            "generation": "20260923T020000Z-5e1f0a3c",
+            "epoch": 7,
+            "next_jti": "c80fb3177d38d0559bd1640450cd788f",
+            "current": {
+                "name": "Midnight_Overture.fseq",
+                "title": "Overture at Midnight",
+                "item_id": "b43d1d4f3b142d0e2335409f11ac8b93",
+                "observed_at": 1790129159,
+                "remaining_s": 200
+            },
+            "next": {
+                "name": "Northern_Lights_Theme.fseq",
+                "title": "Aurora Theme",
+                "item_id": "647da11ca33fe17ee25bebddd0ddb150",
+                "authoritative": true
+            }
+        },
+        "request": {
+            "session": "listener-one_4f9c2a7b8e1d3c5a",
+            "ctx": "current"
+        },
+        "claims": {
+            "typ": "lof-audio-grant",
+            "ver": 1,
+            "kid": "fixture-g1",
+            "sub": "b22dc8c5c0e5841be9e4f090631816f2",
+            "rid": "7964cad1adcfebce08cb4ff0f68317f6",
+            "item": "b43d1d4f3b142d0e2335409f11ac8b93",
+            "ctx": "current",
+            "gen": "20260923T020000Z-5e1f0a3c",
+            "iat": 1790129160,
+            "nbf": 1790129160,
+            "exp": 1790129379,
+            "jti": "c80fb3177d38d0559bd1640450cd788f",
+            "epoch": 7,
+            "bud": {
+                "req": 200,
+                "bytes": 45056,
+                "conc": 2,
+                "rate_n": 20,
+                "rate_s": 10,
+                "win": 4096
+            }
+        },
+        "token": "lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjkzNzksImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjkxNjAsIml0ZW0iOiJiNDNkMWQ0ZjNiMTQyZDBlMjMzNTQwOWYxMWFjOGI5MyIsImp0aSI6ImM4MGZiMzE3N2QzOGQwNTU5YmQxNjQwNDUwY2Q3ODhmIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTE2MCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.zGsTnNPDj6sCTSQHl0r-gFzks1CPX_CwE4ZxS0U4Li8",
+        "response": {
+            "status": 200,
+            "body": {
+                "ok": true,
+                "reason": "ok",
+                "ctx": "current",
+                "media": "/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6",
+                "expires_at": 1790129379,
+                "renew_at": 1790129364,
+                "server_time": 1790129160,
+                "item": {
+                    "key": "b43d1d4f3b142d0e2335409f11ac8b93",
+                    "title": "Overture at Midnight"
+                },
+                "fallback": "fm",
+                "autoplay": false
+            },
+            "set_cookie": [
+                "lof_ag=lofg1.eyJidWQiOnsiYnl0ZXMiOjQ1MDU2LCJjb25jIjoyLCJyYXRlX24iOjIwLCJyYXRlX3MiOjEwLCJyZXEiOjIwMCwid2luIjo0MDk2fSwiY3R4IjoiY3VycmVudCIsImVwb2NoIjo3LCJleHAiOjE3OTAxMjkzNzksImdlbiI6IjIwMjYwOTIzVDAyMDAwMFotNWUxZjBhM2MiLCJpYXQiOjE3OTAxMjkxNjAsIml0ZW0iOiJiNDNkMWQ0ZjNiMTQyZDBlMjMzNTQwOWYxMWFjOGI5MyIsImp0aSI6ImM4MGZiMzE3N2QzOGQwNTU5YmQxNjQwNDUwY2Q3ODhmIiwia2lkIjoiZml4dHVyZS1nMSIsIm5iZiI6MTc5MDEyOTE2MCwicmlkIjoiNzk2NGNhZDFhZGNmZWJjZTA4Y2I0ZmYwZjY4MzE3ZjYiLCJzdWIiOiJiMjJkYzhjNWMwZTU4NDFiZTllNGYwOTA2MzE4MTZmMiIsInR5cCI6ImxvZi1hdWRpby1ncmFudCIsInZlciI6MX0.zGsTnNPDj6sCTSQHl0r-gFzks1CPX_CwE4ZxS0U4Li8; Path=/wp-json/lof-core/v1/audio/media/7964cad1adcfebce08cb4ff0f68317f6; Max-Age=219; Secure; HttpOnly; SameSite=Strict",
+                "lof_as=listener-one_4f9c2a7b8e1d3c5a; Path=/wp-json/lof-core/v1/audio/; Max-Age=43200; Secure; HttpOnly; SameSite=Strict"
+            ]
+        }
+    }
+}

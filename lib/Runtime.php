@@ -13,6 +13,11 @@ use LofAudioSupply\Publish\Generations;
 use LofAudioSupply\Publish\Publisher;
 use LofAudioSupply\Transport\LocalTransport;
 use LofAudioSupply\Transport\SshRsyncTransport;
+use LofAudioSupply\Viewer\FfmpegEncoder;
+use LofAudioSupply\Viewer\M4aInspector;
+use LofAudioSupply\Viewer\SupplyMasterSource;
+use LofAudioSupply\Viewer\ViewerConfig;
+use LofAudioSupply\Viewer\ViewerPublisher;
 
 /**
  * Assembles the component from a plugin directory.
@@ -83,6 +88,36 @@ final class Runtime
     public function processRunner(): ProcessRunner
     {
         return new ProcessRunner($this->policy->allowedBinaries);
+    }
+
+    public function viewerEnabled(): bool
+    {
+        return ($this->policy->viewerRendition['enabled'] ?? false) === true;
+    }
+
+    public function viewerConfig(Settings $settings): ViewerConfig
+    {
+        return ViewerConfig::fromPolicy($this->policy, $settings);
+    }
+
+    /**
+     * The viewer-rendition lane, assembled from policy alone: the allowlisted
+     * encoder through the one ProcessRunner, the structural inspector, and the
+     * verified media-supply generation as the only source of masters.
+     */
+    public function viewerPublisher(Settings $settings): ViewerPublisher
+    {
+        $config = $this->viewerConfig($settings);
+        $supply = $this->generations($settings);
+
+        return new ViewerPublisher(
+            $config,
+            $supply,
+            $settings,
+            new SupplyMasterSource($supply),
+            new FfmpegEncoder($this->processRunner(), $config->encoder, $config->encodeTimeoutSeconds),
+            new M4aInspector()
+        );
     }
 
     public function remoteTransport(Settings $settings): SshRsyncTransport
