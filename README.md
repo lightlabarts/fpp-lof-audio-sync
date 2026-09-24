@@ -232,7 +232,7 @@ It never infers either root from `destination_path`. It follows the contract com
 4. read the destination back and run the consumer pipeline against it
 5. `health.json` last
 
-The file lists come from the verified manifest. There is no glob, directory listing or delete. A failure at any step leaves the destination's old `health.json` authoritative. Delivered generations are never removed, so current and previous stay recoverable. A destination rollback is a local `viewer-rollback` followed by `viewer-distribute`.
+The file lists come from the verified manifest. There is no glob, directory listing or delete. A failure before `health.json` is sent leaves the destination's old pointer authoritative. The outcome never assumes this: the destination pointer is read before the run and read back after any failure. If it changed, the error is `viewer_distribute.pointer_moved_unverified`, and the destination's verdict at that moment is recorded. This covers a transport that copies `health.json` but reports failure, and a destination that drifts after the commit. The old pointer is not restored automatically. Delivered generations are never removed, so current and previous stay recoverable. A destination rollback is a local `viewer-rollback` followed by `viewer-distribute`.
 
 **Only `mode: "local"` works today.** Its destinations are paths on this host, delivered with the existing `LocalTransport` and read back directly. **`mode: "remote"` is refused before any transfer.** The existing SSH/rsync transport can write, with checksummed per-file temp-then-rename, but it has no allowlisted remote read. So it cannot prove the destination before moving the health pointer, and a delivery that skipped that proof would not be health-last in any meaningful sense.
 

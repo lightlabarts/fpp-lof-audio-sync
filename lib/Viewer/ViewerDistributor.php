@@ -31,8 +31,18 @@ use LofAudioSupply\Transport\Transport;
  *
  * Until step 5 the destination's old health.json is authoritative, and the
  * generation it names is never overwritten or removed (a new generation is a
- * new directory; nothing is ever deleted at the destination). A failure at any
- * step leaves the destination serving what it served before.
+ * new directory; nothing is ever deleted at the destination). A failure before
+ * step 5 leaves the old pointer in place.
+ *
+ * Whether the pointer moved is never assumed: the destination health.json is
+ * read before any transfer and read back after every failure, and the outcome
+ * reports what was observed. A transport can copy health.json and still report
+ * failure, and the destination can change after the commit; in both cases the
+ * new pointer may be live. That is reported as
+ * `viewer_distribute.pointer_moved_unverified`, with the destination's verdict
+ * at that moment, rather than as a failure that left the destination alone.
+ * The old pointer is not restored automatically: its generation was not
+ * re-proved in this run, so restoring it would be an unproven claim too.
  *
  * The file list is derived from the verified local manifest - never a glob or
  * directory listing - so only renditions, the manifest and the health pointer
@@ -83,6 +93,8 @@ final class ViewerDistributor
 
         $lock = new Lock($this->supply->lockPath());
         $lock->acquire();
+        $pointerBefore = $this->verifier->healthBytes();
+        $generation = null;
         try {
             // Only a fully verified local current is ever shipped.
             $healthBytes = $this->readLocal($this->local->healthPath());
@@ -114,7 +126,7 @@ final class ViewerDistributor
             if ($delivered !== ['ok', 'ok']
                 || $this->verifier->fileBytes('viewer', 'manifests/' . $generation . '.json') !== $manifestBytes
                 || $this->verifier->fileBytes('private', 'source-maps/' . $generation . '.json') !== $mapBytes) {
-                throw new IntegrityException('viewer_distribute.destination_unverified', 'The delivered publication does not verify; the destination pointer was not moved.', [
+                throw new IntegrityException('viewer_distribute.destination_unverified', 'The delivered publication does not verify; health.json was not sent.', [
                     'generation' => $generation, 'reason' => $delivered[1] === 'ok' ? 'document_bytes' : $delivered[1],
                 ]);
             }
@@ -123,7 +135,7 @@ final class ViewerDistributor
             // The commit point, and only then.
             $this->send('health', $this->viewer->viewerRoot, $this->config->viewerDestination, ['health.json'], $stages);
             if ($this->verifier->healthBytes() !== $healthBytes || $this->verifier->verdict($health) !== ['ok', 'ok']) {
-                throw new IntegrityException('viewer_distribute.post_commit_unverified', 'The destination changed underneath the commit.', ['generation' => $generation]);
+                throw new IntegrityException('viewer_distribute.post_commit_unverified', 'The destination changed underneath the commit.', ['generation' => $generation, 'reason' => 'post_commit']);
             }
 
             return $this->finish([
@@ -135,13 +147,28 @@ final class ViewerDistributor
             ], $started);
         } catch (\Throwable $e) {
             $safe = self::sanitize($e);
+            // Observed, not inferred from the stage list: read the pointer back.
+            $pointerAfter = $this->verifier->healthBytes();
+            $moved = $pointerAfter !== $pointerBefore;
+            $destinationReason = null;
+            if ($moved) {
+                $live = $pointerAfter === null ? null : json_decode($pointerAfter, true);
+                $destinationReason = $this->verifier->verdict(is_array($live) ? $live : null)[1];
+                $safe = new IntegrityException(
+                    'viewer_distribute.pointer_moved_unverified',
+                    'The destination health.json changed but delivery did not complete verification; lof-core may now read the new pointer.',
+                    ['generation' => $generation, 'reason' => $safe->code(), 'destination_verdict' => $destinationReason]
+                );
+            }
             $context = $safe->context();
             $this->recordLastRun([
                 'outcome' => 'failed',
                 'error_code' => $safe->code(),
                 'reason' => is_string($context['reason'] ?? null) ? $context['reason'] : null,
                 'completed_stages' => $stages,
-                'destination_pointer_moved' => in_array('health', $stages, true),
+                'destination_pointer_moved' => $moved,
+                'destination_pointer_observed' => $moved ? 'changed' : 'unchanged',
+                'destination_verdict' => $destinationReason,
                 'duration_seconds' => round(microtime(true) - $started, 3),
             ]);
 
@@ -214,6 +241,6 @@ final class ViewerDistributor
         }
         $cause = $e instanceof LofAudioException ? $e->code() : 'internal';
 
-        return new PublishException('viewer_distribute.failed', 'Viewer distribution failed; the destination pointer was not moved.', ['cause' => $cause]);
+        return new PublishException('viewer_distribute.failed', 'Viewer distribution failed.', ['cause' => $cause]);
     }
 }

@@ -187,11 +187,59 @@ final class ViewerDistributeTest extends TestCase
             $this->assertStringNotContains('Midnight', json_encode($e->context()) . $e->getMessage());
             $last = Json::readFile($this->v->estate->publicationRoot . '/' . ViewerDistributor::LAST_RUN_FILE);
             $this->assertFalse($last['destination_pointer_moved'], $label);
+            $this->assertSame('unchanged', $last['destination_pointer_observed'], $label . ': observed by read-back');
             // Repair the destination copy the fault left behind, as a retry would.
             $this->distributor()->distribute();
             $this->assertSame(self::GEN, Json::decode((string) $this->destHealth())['current']['generation'], $label . ': retry delivers');
             file_put_contents($this->viewerDest . '/health.json', $served);
         }
+    }
+
+    public function testAHealthCopyThatReportsFailureIsReportedAsAMovedPointer(): void
+    {
+        $this->v->estate->seedMusic(['a.mp3' => 'one']);
+        $this->v->estate->publisher()->publish();
+        $this->publish(self::GEN_PREV, 1);
+        $this->distributor()->distribute();
+        $old = $this->destHealth();
+        $this->publish(self::GEN, 2);
+
+        $e = $this->assertRefused('viewer_distribute.pointer_moved_unverified', fn () => $this->distributor(new FaultTransport(FaultTransport::COPY_REPORT, 4))->distribute());
+        $this->assertSame('viewer_distribute.transfer_incomplete', $e->context()['reason']);
+        $this->assertSame('ok', $e->context()['destination_verdict'], 'The bytes it moved to happen to verify.');
+        // The truth: the new pointer IS live, and it is reported that way.
+        $this->assertNotSame($old, $this->destHealth());
+        $this->assertSame((string) file_get_contents($this->v->viewerRoot . '/health.json'), $this->destHealth());
+        $last = Json::readFile($this->v->estate->publicationRoot . '/' . ViewerDistributor::LAST_RUN_FILE);
+        $this->assertTrue($last['destination_pointer_moved']);
+        $this->assertSame('changed', $last['destination_pointer_observed']);
+        $this->assertSame('ok', $last['destination_verdict']);
+        $this->assertSame(['renditions', 'manifest', 'source_map', 'verified'], $last['completed_stages']);
+        $status = Json::readFile($this->v->estate->publicationRoot . '/health.json');
+        $this->assertTrue($status['viewer_distribution']['destination_pointer_moved'], 'Supply health reports it too.');
+        // A clean retry then completes normally.
+        $this->assertSame('unchanged', $this->distributor()->distribute()['outcome']);
+    }
+
+    public function testPostCommitTamperIsReportedAsAMovedUnverifiedPointer(): void
+    {
+        $this->publish(self::GEN_PREV, 1);
+        $this->distributor()->distribute();
+        $old = $this->destHealth();
+        $this->publish(self::GEN, 2);
+
+        $e = $this->assertRefused('viewer_distribute.pointer_moved_unverified', fn () => $this->distributor(new FaultTransport(FaultTransport::TAMPER_AFTER, 4))->distribute());
+        $this->assertSame('viewer_distribute.post_commit_unverified', $e->context()['reason']);
+        $this->assertSame('file_size_drift', $e->context()['destination_verdict'], 'lof-core would refuse what is now live.');
+        $this->assertNotSame($old, $this->destHealth(), 'The pointer moved; the outcome must not claim otherwise.');
+        $last = Json::readFile($this->v->estate->publicationRoot . '/' . ViewerDistributor::LAST_RUN_FILE);
+        $this->assertTrue($last['destination_pointer_moved']);
+        $this->assertSame('file_size_drift', $last['destination_verdict']);
+        $this->assertSame(['renditions', 'manifest', 'source_map', 'verified', 'health'], $last['completed_stages']);
+        $this->assertStringNotContains('not moved', $e->getMessage());
+        // Redelivery repairs the tampered rendition and re-proves the live pointer.
+        $this->assertSame('distributed', $this->distributor()->distribute()['outcome']);
+        $this->assertSame(['ok', 'ok'], $this->referenceVerdict());
     }
 
     public function testRefusesAnUnverifiedLocalPublication(): void
@@ -405,6 +453,10 @@ final class FaultTransport implements Transport
     public const PARTIAL = 'partial';
     public const REPORT = 'report';
     public const CORRUPT = 'corrupt';
+    /** Copies the files, then reports failure anyway (the pointer can move). */
+    public const COPY_REPORT = 'copy-report';
+    /** Copies the files, then tampers a delivered rendition (post-commit drift). */
+    public const TAMPER_AFTER = 'tamper-after';
 
     /** @var list<array{0:string,1:string,2:list<string>}> */
     public array $calls = [];
@@ -435,6 +487,17 @@ final class FaultTransport implements Transport
                 return new TransferReport($this->name(), 1, 0, 0.0, [], '');
             case self::REPORT:
                 return new TransferReport($this->name(), 0, 0, 0.0, ['asset: refused'], '');
+            case self::COPY_REPORT:
+                $this->inner->transfer($sourceRoot, $destinationRoot, $relativePaths);
+
+                return new TransferReport($this->name(), 0, 0, 0.0, ['health.json: reported failed after copy'], '');
+            case self::TAMPER_AFTER:
+                $report = $this->inner->transfer($sourceRoot, $destinationRoot, $relativePaths);
+                $victim = glob($destinationRoot . '/generations/*/*.m4a');
+                rsort($victim, SORT_STRING);
+                file_put_contents($victim[0], 'tampered after commit', FILE_APPEND);
+
+                return $report;
             case self::CORRUPT:
                 $report = $this->inner->transfer($sourceRoot, $destinationRoot, $relativePaths);
                 $target = $destinationRoot . '/' . $relativePaths[0];
