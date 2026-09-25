@@ -62,6 +62,13 @@ final class Policy
      * @var array<string,mixed>
      */
     public readonly array $viewerDistribution;
+    /**
+     * Raw `supply_delivery` block; validated by Publish\SupplyDeliveryConfig
+     * only when `supply-deliver` runs.
+     *
+     * @var array<string,mixed>
+     */
+    public readonly array $supplyDelivery;
 
     /** @param array<string,mixed> $overrides */
     public function __construct(array $overrides = [])
@@ -95,6 +102,10 @@ final class Policy
             throw new LofAudioException('policy.bad_viewer_distribution', 'viewer_distribution must be an object.');
         }
         $this->viewerDistribution = $merged['viewer_distribution'];
+        if (!is_array($merged['supply_delivery']) || array_is_list($merged['supply_delivery']) && $merged['supply_delivery'] !== []) {
+            throw new LofAudioException('policy.bad_supply_delivery', 'supply_delivery must be an object.');
+        }
+        $this->supplyDelivery = $merged['supply_delivery'];
     }
 
     /** @return array<string,mixed> */
@@ -152,6 +163,8 @@ final class Policy
             'viewer_rendition' => [],
             // Viewer-publication distribution: disarmed, no destination set.
             'viewer_distribution' => [],
+            // Verified local master delivery (supply-deliver): disarmed, no destination.
+            'supply_delivery' => [],
         ];
     }
 
@@ -239,6 +252,7 @@ final class Policy
             'known_hosts_path' => $this->knownHostsPath,
             'viewer_rendition' => $this->viewerRendition,
             'viewer_distribution' => $this->viewerDistribution,
+            'supply_delivery' => $this->supplyDelivery,
         ];
     }
 }

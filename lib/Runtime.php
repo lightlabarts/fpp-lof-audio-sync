@@ -139,6 +139,23 @@ final class Runtime
         return new ViewerDistributor($config, $viewer, $this->generations($settings), $settings, $this->localTransport(), $verifier);
     }
 
+    /**
+     * Local verified master delivery. Local mode gets a destination that can
+     * be read back and switched; remote mode gets none, and deliverSupply()
+     * refuses it before any lock or transfer.
+     *
+     * @return array<string,mixed>
+     */
+    public function deliverSupply(Settings $settings): array
+    {
+        $config = \LofAudioSupply\Publish\SupplyDeliveryConfig::fromPolicy($this->policy, $settings);
+        $destination = $config->mode === \LofAudioSupply\Publish\SupplyDeliveryConfig::MODE_LOCAL && $config->destinationRoot !== '' && $config->destinationRoot[0] === '/'
+            ? new \LofAudioSupply\Publish\LocalSupplyDestination(rtrim($config->destinationRoot, '/'))
+            : null;
+
+        return $this->publisher($settings)->deliverSupply($config, $this->localTransport(), $destination);
+    }
+
     public function remoteTransport(Settings $settings): SshRsyncTransport
     {
         $rsync = $this->binaryNamed('rsync');

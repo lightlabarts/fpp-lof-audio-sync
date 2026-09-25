@@ -7,9 +7,11 @@ namespace LofAudioSupply\Publish;
 use LofAudioSupply\Config\Policy;
 use LofAudioSupply\Config\Settings;
 use LofAudioSupply\IntegrityException;
+use LofAudioSupply\LockException;
 use LofAudioSupply\LofAudioException;
 use LofAudioSupply\PublishException;
 use LofAudioSupply\Status\Health;
+use LofAudioSupply\Support\Json;
 use LofAudioSupply\Support\Fs;
 use LofAudioSupply\Support\SafePath;
 use LofAudioSupply\Transport\Transport;
@@ -356,6 +358,212 @@ final class Publisher
             'destination' => $destination,
             'report' => $report->toArray(),
         ];
+    }
+
+    public const SUPPLY_DELIVERY_LAST_RUN_FILE = 'supply-deliver-last-run.json';
+
+    /**
+     * Deliver the verified current generation as a complete supply root:
+     * masters, the byte-identical manifest, read-back, then the pointers.
+     *
+     * Operator-only and default-disarmed; the timer never calls it, and the
+     * legacy masters-only distribute() is untouched. The destination is an
+     * ordinary supply root, so it is read back with Manifest::verifyAgainst
+     * and switched with Generations::activate - which writes `previous`
+     * before it atomically swaps `current`. The pair is therefore not atomic,
+     * and nothing here claims it is: on every failure both links are read
+     * back and reported as observed. Nothing at the destination is deleted and
+     * no pointer is restored automatically.
+     *
+     * $destination is null for any mode that cannot read back (remote), and
+     * such a run is refused before any lock or transfer.
+     *
+     * @return array<string,mixed>
+     */
+    public function deliverSupply(SupplyDeliveryConfig $config, Transport $transport, ?SupplyDestination $destination): array
+    {
+        $started = microtime(true);
+        try {
+            $config->assertDestination();
+            if ($destination === null) {
+                throw new \LofAudioSupply\PolicyViolationException('supply_deliver.remote_unverifiable', 'This destination cannot be read back; delivery stays disarmed.');
+            }
+        } catch (LofAudioException $e) {
+            $this->recordSupplyDelivery(['outcome' => 'refused', 'error_code' => $e->code(), 'destination_disturbed' => false]);
+
+            throw $e;
+        }
+
+        // Fixed lock order: source, then destination.
+        $sourceLock = new Lock($this->generations->lockPath());
+        $sourceLock->acquire();
+        $destinationLock = null;
+        $stages = [];
+        $generation = null;
+        $before = null;
+        try {
+            $generation = $this->generations->currentGeneration();
+            if ($generation === null) {
+                throw new PublishException('supply_deliver.no_current', 'There is no current supply generation.');
+            }
+            $manifestPath = $this->generations->manifestPath($generation);
+            $manifestBytes = is_file($manifestPath) && !is_link($manifestPath) ? (string) file_get_contents($manifestPath) : '';
+            try {
+                $manifest = Manifest::fromArray(Json::decode($manifestBytes, 'manifest'));
+            } catch (\Throwable $e) {
+                throw new IntegrityException('supply_deliver.source_unverified', 'The source manifest does not verify.', ['reason' => 'manifest']);
+            }
+            if ($manifest->generation !== $generation) {
+                throw new IntegrityException('supply_deliver.source_unverified', 'The source manifest names another generation.', ['reason' => 'stale_manifest']);
+            }
+            $problems = $manifest->verifyAgainst($this->generations->generationDir($generation));
+            if ($problems !== []) {
+                throw new IntegrityException('supply_deliver.source_unverified', 'The source generation does not match its manifest.', ['reason' => 'files', 'problem_count' => count($problems)]);
+            }
+
+            $destinationLock = new Lock($destination->lockPath());
+            $destination->prepare($generation);
+            $destinationLock->acquire();
+            $before = $destination->pointers();
+
+            if ($destination->currentGeneration() === $generation && $destination->manifestBytes($generation) === $manifestBytes
+                && $destination->verifyGeneration($manifest, $generation) === []) {
+                return $this->finishSupplyDelivery(['outcome' => 'unchanged', 'generation' => $generation], $started);
+            }
+
+            // Masters, one manifest-listed file per transfer, containment re-proved before each.
+            $sourceRoot = $this->generations->root();
+            $destinationRoot = $config->destinationRoot;
+            foreach ($manifest->paths() as $relative) {
+                $rel = 'generations/' . $generation . '/' . $relative;
+                $destination->assertRealContainment($rel);
+                $this->sendSupply($transport, $sourceRoot, $destinationRoot, $rel);
+            }
+            $stages[] = 'masters';
+            $rel = 'manifests/' . $generation . '.json';
+            $destination->assertRealContainment($rel);
+            $this->sendSupply($transport, $sourceRoot, $destinationRoot, $rel);
+            $stages[] = 'manifest';
+
+            // Read back: exact file set, sizes, digests; manifest bytes identical.
+            $readBack = $destination->verifyGeneration($manifest, $generation);
+            if ($readBack !== [] || $destination->manifestBytes($generation) !== $manifestBytes) {
+                throw new IntegrityException('supply_deliver.destination_unverified', 'The delivered generation does not verify; no pointer was moved by this stage.', [
+                    'reason' => $readBack === [] ? 'manifest_bytes' : 'files', 'problem_count' => count($readBack),
+                ]);
+            }
+            $stages[] = 'verified';
+
+            // Pointers last: previous, then the live current (not atomic as a pair).
+            $destination->activate($generation);
+            $stages[] = 'activated';
+            if ($destination->currentGeneration() !== $generation || $destination->verifyGeneration($manifest, $generation) !== []
+                || $destination->manifestBytes($generation) !== $manifestBytes) {
+                throw new IntegrityException('supply_deliver.post_activate_unverified', 'The destination does not verify after activation.', ['reason' => 'post_activate']);
+            }
+
+            return $this->finishSupplyDelivery([
+                'outcome' => 'delivered',
+                'generation' => $generation,
+                'asset_count' => $manifest->assetCount(),
+                'total_bytes' => $manifest->totalBytes(),
+                'manifest_sha256' => $manifest->digest(),
+                'stages' => $stages,
+            ], $started);
+        } catch (\Throwable $e) {
+            $safe = self::sanitizeSupplyDelivery($e);
+            $after = $destination->pointers();
+            $currentMoved = $before !== null && $after['current'] !== $before['current'];
+            $previousMoved = $before !== null && $after['previous'] !== $before['previous'];
+            if ($currentMoved) {
+                $safe = new IntegrityException('supply_deliver.pointer_moved_unverified', 'The destination current pointer moved but delivery did not verify.', ['reason' => $safe->code()]);
+            } elseif ($previousMoved) {
+                $safe = new IntegrityException('supply_deliver.previous_moved_current_unchanged', 'The destination previous pointer moved; current still names the old generation.', ['reason' => $safe->code()]);
+            }
+            $context = $safe->context();
+            $this->recordSupplyDelivery([
+                'outcome' => 'failed',
+                'error_code' => $safe->code(),
+                'reason' => is_string($context['reason'] ?? null) ? $context['reason'] : null,
+                'problem_count' => is_int($context['problem_count'] ?? null) ? $context['problem_count'] : null,
+                'completed_stages' => $stages,
+                'pointers_observed' => $before === null ? 'not_read' : 'read_back',
+                'current_moved' => $currentMoved,
+                'previous_moved' => $previousMoved,
+                'current_before' => self::pointerId($before['current'] ?? null),
+                'current_after' => self::pointerId($after['current']),
+                'previous_before' => self::pointerId($before['previous'] ?? null),
+                'previous_after' => self::pointerId($after['previous']),
+                'duration_seconds' => round(microtime(true) - $started, 3),
+            ]);
+
+            throw $safe;
+        } finally {
+            if ($destinationLock !== null) {
+                $destinationLock->release();
+            }
+            $sourceLock->release();
+        }
+    }
+
+    private function sendSupply(Transport $transport, string $from, string $to, string $relative): void
+    {
+        $report = $transport->transfer($from, $to, [$relative]);
+        if (!$report->ok() || $report->filesTransferred !== 1) {
+            // Counts only: a transport's failure lines can name a master.
+            throw new PublishException('supply_deliver.transfer_incomplete', 'A delivery transfer did not complete.', ['problem_count' => max(1, count($report->failures))]);
+        }
+    }
+
+    /** A link target reduced to a generation id, never a path. */
+    private static function pointerId(?string $target): ?string
+    {
+        if ($target === null) {
+            return null;
+        }
+        if ($target === '!not-a-link') {
+            return 'not-a-link';
+        }
+        $id = basename($target);
+
+        return Generations::isValidGenerationId($id) ? $id : 'unrecognised';
+    }
+
+    /**
+     * @param array<string,mixed> $result
+     * @return array<string,mixed>
+     */
+    private function finishSupplyDelivery(array $result, float $started): array
+    {
+        $result['duration_seconds'] = round(microtime(true) - $started, 3);
+        $this->recordSupplyDelivery($result);
+
+        return $result;
+    }
+
+    /** @param array<string,mixed> $record */
+    private function recordSupplyDelivery(array $record): void
+    {
+        try {
+            $record = ['supply_delivery_last_run_version' => 1, 'finished_utc' => Manifest::nowUtc()] + $record;
+            Fs::writeFileAtomic($this->generations->root() . '/' . self::SUPPLY_DELIVERY_LAST_RUN_FILE, Json::pretty($record), 0644);
+            if (is_file($this->generations->healthPath())) {
+                Health::write($this->generations, Health::current($this->generations, $this->settings));
+            }
+        } catch (\Throwable $e) {
+            // Reporting must never mask the real outcome.
+        }
+    }
+
+    /** Only `supply_deliver.*` and lock errors carry source-free context by construction. */
+    private static function sanitizeSupplyDelivery(\Throwable $e): LofAudioException
+    {
+        if ($e instanceof LockException || ($e instanceof LofAudioException && strncmp($e->code(), 'supply_deliver.', 15) === 0)) {
+            return $e;
+        }
+        $cause = $e instanceof LofAudioException ? $e->code() : 'internal';
+
+        return new PublishException('supply_deliver.failed', 'Supply delivery failed.', ['reason' => $cause]);
     }
 
     /** @param array<string,mixed> $lastRun */

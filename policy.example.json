@@ -53,5 +53,13 @@
 		"mode": "local",
 		"viewer_destination": "",
 		"private_destination": ""
+	},
+
+	"_supply_delivery_comment": "Operator-only verified local master delivery (supply-deliver): masters, the byte-identical manifest, read-back, then current. Disarmed, no destination. mode 'local' only; 'remote' is refused before any transfer. Separate from destination_path, which the legacy masters-only distribute keeps.",
+	"supply_delivery": {
+		"enabled": false,
+		"mode": "local",
+		"destination_root": "",
+		"public_web_roots": ["/opt/fpp/www", "/var/www", "/srv/www", "/usr/share/nginx", "/usr/share/apache2"]
 	}
 }

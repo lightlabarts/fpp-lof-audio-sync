@@ -89,6 +89,7 @@ final class Health
             // reported here (contract V1 section 5.6).
             'viewer_rendition' => self::viewerLastRun($generations),
             'viewer_distribution' => self::viewerLastRun($generations, 'viewer-distribute-last-run.json'),
+            'supply_delivery' => self::viewerLastRun($generations, 'supply-deliver-last-run.json'),
             // Scope contract. Audio supply owns media delivery and nothing else.
             'owns' => [
                 'media_supply' => true,

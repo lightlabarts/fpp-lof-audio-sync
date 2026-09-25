@@ -216,6 +216,23 @@ The timer's `publish` then runs the lane after each good supply run.
 The lane never serves bytes, issues grants, or knows about listeners; that is `lof-core`'s side of
 the contract.
 
+### Delivering verified masters locally (`supply-deliver`)
+
+`supply-deliver` is an operator-only command. The timer never runs it. It is configured only in the root-owned `supply_delivery` policy block, which is disarmed by default and has no destination. The legacy masters-only `distribute` and its `destination_path` are unchanged.
+
+It delivers the verified current supply generation as a complete supply root that a server-side viewer lane can read. The steps run in this order:
+
+1. Lock the source, then the destination.
+2. Re-verify the source generation and its manifest.
+3. Copy the manifest-listed masters, one per transfer, re-proving real containment before each copy.
+4. Copy the byte-identical manifest.
+5. Read back the exact file set, sizes and digests, and compare the manifest bytes.
+6. Run the existing `Generations::activate()`.
+
+`activate()` writes `previous` before it atomically swaps `current`, so the pair is not atomic. On any failure both links are read back and reported as observed. Possible codes include `supply_deliver.previous_moved_current_unchanged` and `supply_deliver.pointer_moved_unverified`.
+
+Nothing at the destination is deleted, and no pointer is restored automatically. Only `mode: "local"` runs; `remote` is refused before any lock or transfer.
+
 ### Delivering the viewer publication (`viewer-distribute`)
 
 A separate, operator-only command. It is never run by the timer, and it does not reuse or repurpose the media-supply `distribute`, which ships masters. It is configured only in the root-owned `viewer_distribution` policy block. That block is disarmed by default and has no destination.

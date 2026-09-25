@@ -21,6 +21,7 @@
  *   lof-audio-supply self-check
  *   lof-audio-supply viewer-publish | viewer-verify | viewer-rollback | viewer-recover   [--json]
  *   lof-audio-supply viewer-distribute [--json]   (operator-only; disarmed unless policy arms it)
+ *   lof-audio-supply supply-deliver [--json]      (operator-only; local verified masters+manifest+current; disarmed)
  */
 
 declare(strict_types=1);
@@ -75,6 +76,7 @@ const COMMANDS = [
     'viewer-rollback' => ['json'],
     'viewer-recover' => ['json'],
     'viewer-distribute' => ['json'],
+    'supply-deliver' => ['json'],
 ];
 
 /**
@@ -226,6 +228,13 @@ try {
             }
             emit($payload, $json);
             exit($exit);
+
+        case 'supply-deliver':
+            // Never run by the timer: delivery is an explicit operator act.
+            $settings = $runtime->store()->load();
+            $runtime->generations($settings)->initialise();
+            emit($runtime->deliverSupply($settings), $json);
+            exit(EXIT_OK);
 
         case 'viewer-distribute':
             // Never run by the timer: delivery is an explicit operator act.
