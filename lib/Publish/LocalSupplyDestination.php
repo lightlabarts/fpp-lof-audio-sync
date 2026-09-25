@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LofAudioSupply\Publish;
 
 use LofAudioSupply\PolicyViolationException;
+use LofAudioSupply\PublishException;
 use LofAudioSupply\Support\Fs;
 use LofAudioSupply\Support\SafePath;
 
@@ -83,6 +84,105 @@ final class LocalSupplyDestination implements SupplyDestination
     public function verifyGeneration(Manifest $manifest, string $generation): array
     {
         return $manifest->verifyAgainst($this->generations->generationDir($generation));
+    }
+
+    public function generationExists(string $generation): bool
+    {
+        $dir = $this->generations->generationDir($generation);
+
+        return file_exists($dir) || is_link($dir);
+    }
+
+    private function manifestStagingDir(string $generation): string
+    {
+        return $this->generations->stagingDir($generation) . '.manifest';
+    }
+
+    public function quarantineStaging(string $generation): int
+    {
+        $moved = 0;
+        $into = null;
+        foreach ([$this->generations->stagingDir($generation), $this->manifestStagingDir($generation)] as $path) {
+            if (!file_exists($path) && !is_link($path)) {
+                continue;
+            }
+            if ($into === null) {
+                $into = $this->generations->quarantineRoot() . '/' . gmdate('Ymd\THis\Z') . '-' . bin2hex(random_bytes(4)) . '/staging';
+                Fs::ensureDir($into, 0750);
+            }
+            if (!@rename($path, $into . '/' . basename($path))) {
+                throw new PublishException('supply_deliver.quarantine_failed', 'Stale staging could not be moved to quarantine.');
+            }
+            $moved++;
+        }
+        if ($into !== null) {
+            Fs::fsyncDir($this->generations->stagingRoot());
+        }
+
+        return $moved;
+    }
+
+    public function beginStaging(string $generation): string
+    {
+        $dir = $this->generations->stagingDir($generation);
+        if (file_exists($dir) || is_link($dir)) {
+            throw new PublishException('supply_deliver.staging_exists', 'Staging for this generation already exists.');
+        }
+        Fs::ensureDir($dir, 0750);
+        $this->generations->markIncomplete($generation);
+
+        return $dir;
+    }
+
+    public function beginManifestStaging(string $generation): string
+    {
+        $dir = $this->manifestStagingDir($generation);
+        if (file_exists($dir) || is_link($dir)) {
+            throw new PublishException('supply_deliver.staging_exists', 'Manifest staging for this generation already exists.');
+        }
+        Fs::ensureDir($dir, 0750);
+
+        return $dir;
+    }
+
+    public function verifyStaging(Manifest $manifest, string $generation): array
+    {
+        return array_values(array_filter(
+            $manifest->verifyAgainst($this->generations->stagingDir($generation)),
+            static fn (array $p): bool => $p['asset'] !== Generations::INCOMPLETE_MARKER
+        ));
+    }
+
+    public function stagedManifestBytes(string $generation): ?string
+    {
+        $path = $this->manifestStagingDir($generation) . '/' . $generation . '.json';
+        if (is_link($path) || !is_file($path)) {
+            return null;
+        }
+        $bytes = @file_get_contents($path);
+
+        return $bytes === false ? null : $bytes;
+    }
+
+    public function promote(string $generation): void
+    {
+        $this->generations->clearIncomplete($generation);
+        $this->generations->promoteStaging($generation);
+    }
+
+    public function commitManifest(string $generation): void
+    {
+        $target = $this->generations->manifestPath($generation);
+        if (file_exists($target) || is_link($target)) {
+            throw new PublishException('supply_deliver.manifest_exists', 'A manifest for this generation already exists.');
+        }
+        $staged = $this->manifestStagingDir($generation);
+        Fs::ensureDir($this->generations->manifestsRoot(), 0750);
+        if (!@rename($staged . '/' . $generation . '.json', $target)) {
+            throw new PublishException('supply_deliver.manifest_commit_failed', 'The staged manifest could not be committed.');
+        }
+        Fs::fsyncDir($this->generations->manifestsRoot());
+        @rmdir($staged);
     }
 
     public function activate(string $generation): void

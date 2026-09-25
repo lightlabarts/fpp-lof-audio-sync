@@ -224,10 +224,19 @@ It delivers the verified current supply generation as a complete supply root tha
 
 1. Lock the source, then the destination.
 2. Re-verify the source generation and its manifest.
-3. Copy the manifest-listed masters, one per transfer, re-proving real containment before each copy.
-4. Copy the byte-identical manifest.
+3. Copy the manifest-listed masters into `staging/<gen>/`, one per transfer, re-proving real containment before each copy.
+4. Copy the byte-identical manifest into `staging/<gen>.manifest/`.
 5. Read back the exact file set, sizes and digests, and compare the manifest bytes.
-6. Run the existing `Generations::activate()`.
+6. Promote the staging directory with one rename, then commit the manifest with one rename.
+7. Re-verify the committed generation.
+8. Run the existing `Generations::activate()`.
+
+Destination generations are immutable:
+- An existing generation id, whether named by `current` or `previous` or historical, is never written into.
+- If it verifies exactly, it is reused with zero transfers.
+- Otherwise the run refuses with `supply_deliver.generation_conflict`, after zero transfers.
+- Stale staging is moved to quarantine, never deleted.
+- A damaged live generation is **not** repaired automatically; that needs an operator decision.
 
 `activate()` writes `previous` before it atomically swaps `current`, so the pair is not atomic. On any failure both links are read back and reported as observed. Possible codes include `supply_deliver.previous_moved_current_unchanged` and `supply_deliver.pointer_moved_unverified`.
 

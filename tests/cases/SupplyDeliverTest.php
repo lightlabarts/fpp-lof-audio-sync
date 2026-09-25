@@ -101,6 +101,27 @@ final class SupplyDeliverTest extends TestCase
         return (new LocalSupplyDestination($this->dest))->pointers();
     }
 
+    /** Every destination byte and link outside `locks/`, `staging/` and `quarantine/`. */
+    private function committedTree(): array
+    {
+        $out = [];
+        if (!is_dir($this->dest)) {
+            return $out;
+        }
+        $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->dest, \FilesystemIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($it as $f) {
+            /** @var \SplFileInfo $f */
+            $rel = substr($f->getPathname(), strlen($this->dest) + 1);
+            if (preg_match('#^(locks|staging|quarantine)(/|$)#', $rel) === 1) {
+                continue;
+            }
+            $out[$rel] = $f->isLink() ? 'link:' . readlink($f->getPathname()) : ($f->isDir() ? 'dir' : hash_file('sha256', $f->getPathname()) . ':' . filemtime($f->getPathname()));
+        }
+        ksort($out, SORT_STRING);
+
+        return $out;
+    }
+
     private function assertNoSourceFacts(string $text, string $label): void
     {
         foreach (['SECRETNAME', 'Overture', 'Theme', 'Finale', 'Masters', '.wav', '.mp3', '.flac', $this->e->root] as $needle) {
@@ -120,12 +141,14 @@ final class SupplyDeliverTest extends TestCase
         $result = $this->deliver($t);
 
         $this->assertSame('delivered', $result['outcome']);
-        $this->assertSame(['masters', 'manifest', 'verified', 'activated'], $result['stages']);
+        $this->assertSame(['masters', 'manifest', 'verified', 'promoted', 'manifest_committed', 'activated'], $result['stages']);
         $rels = array_keys(self::MASTERS);
         sort($rels, SORT_STRING);
-        $expected = array_map(static fn ($r) => ['generations/' . $gen . '/' . $r], $rels);
-        $expected[] = ['manifests/' . $gen . '.json'];
-        $this->assertSame($expected, array_map(static fn ($c) => $c[2], $t->calls), 'one manifest-listed file per call, manifest last');
+        $srcG = new Generations($this->e->publicationRoot);
+        $expected = array_map(fn ($r) => [$srcG->generationDir($gen), $this->dest . '/staging/' . $gen, [$r]], $rels);
+        $expected[] = [$srcG->manifestsRoot(), $this->dest . '/staging/' . $gen . '.manifest', [$gen . '.json']];
+        $this->assertSame($expected, $t->calls, 'every byte lands in staging first, one manifest-listed file per call, manifest last');
+        $this->assertSame([], array_values(array_diff(scandir($this->dest . '/staging'), ['.', '..'])), 'staging was promoted, not left behind');
 
         // Exact layout, byte-identical manifest, relative current, no previous yet.
         $src = new Generations($this->e->publicationRoot);
@@ -168,6 +191,7 @@ final class SupplyDeliverTest extends TestCase
         $this->deliver();
         $g2 = $this->publish(['New Song.mp3' => 'second generation'] + self::MASTERS);
         $pointers = $this->links();
+        $committed = $this->committedTree();
 
         $cases = [
             'missing (claimed success, nothing copied)' => [new SupplyFaultTransport(SupplyFaultTransport::SILENT, 2), null, 'supply_deliver.destination_unverified', 'files'],
@@ -191,20 +215,131 @@ final class SupplyDeliverTest extends TestCase
             $this->assertNoSourceFacts($e->getMessage() . json_encode($e->context()) . json_encode($last), $label);
             // The server lane still reads the old delivery.
             $this->assertSame($g1, (new SupplyMasterSource(new Generations($this->dest)))->load()->supplyGeneration, $label);
+            // Partial bytes never reach a committed path: nothing under generations/ or manifests/ changed.
+            $this->assertFalse(file_exists($this->dest . '/generations/' . $g2), $label . ': a partial generation was exposed');
+            $this->assertSame($committed, $this->committedTree(), $label . ': committed destination bytes changed');
         }
 
-        // An extra file planted in the new generation is refused and never deleted.
-        TestCase::removeTree($this->dest . '/generations/' . $g2);
+        // Each failed attempt's staging was moved to quarantine by the next run, never deleted.
+        $this->assertSame(count($cases) - 1, count(glob($this->dest . '/quarantine/*/staging/' . $g2) ?: []));
+        // An existing (planted) generation with the same id is never written into.
+        TestCase::removeTree($this->dest . '/staging');
+        @mkdir($this->dest . '/staging', 0750);
         @mkdir($this->dest . '/generations/' . $g2, 0750, true);
         file_put_contents($this->dest . '/generations/' . $g2 . '/planted.wav', 'extra');
-        $this->assertRefused('supply_deliver.destination_unverified', fn () => $this->deliver());
-        $this->assertTrue(is_file($this->dest . '/generations/' . $g2 . '/planted.wav'));
+        $planted = $this->committedTree();
+        $t = new SupplyFaultTransport();
+        $e = $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame('files', $e->context()['reason']);
+        $this->assertSame([], $t->calls, 'zero transfers');
+        $this->assertSame($planted, $this->committedTree(), 'the conflicting generation is left exactly as found');
         $this->assertSame($pointers, $this->links());
-        unlink($this->dest . '/generations/' . $g2 . '/planted.wav');
+        TestCase::removeTree($this->dest . '/generations/' . $g2);
 
-        // A stale manifest left at the destination is replaced and re-proved; retry succeeds.
+        // An orphan manifest for the id is never overwritten either.
         file_put_contents($this->dest . '/manifests/' . $g2 . '.json', '{"stale":true}');
+        $e = $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame('orphan_manifest', $e->context()['reason']);
+        $this->assertSame([], $t->calls);
+        $this->assertSame('{"stale":true}', (string) file_get_contents($this->dest . '/manifests/' . $g2 . '.json'));
+        unlink($this->dest . '/manifests/' . $g2 . '.json');
+
+        // With the evidence removed by the operator, a retry delivers; earlier staging was quarantined, not deleted.
         $this->assertSame('delivered', $this->deliver()['outcome']);
+        $this->assertSame('generations/' . $g2, $this->links()['current']);
+    }
+
+    public function testATamperedCurrentOrPreviousWithTheSameIdIsNeverWrittenInto(): void
+    {
+        $g1 = $this->publish();
+        $this->deliver();
+        $g2 = $this->publish(['Two.mp3' => 'two'] + self::MASTERS);
+        $this->deliver();
+        $this->assertSame(['current' => 'generations/' . $g2, 'previous' => 'generations/' . $g1], $this->links());
+
+        // Tampered live current, same id: refuse with zero transfers and no mutation.
+        $live = $this->dest . '/generations/' . $g2 . '/Two.mp3';
+        file_put_contents($live, 'tampered live');
+        $before = $this->committedTree();
+        $t = new SupplyFaultTransport();
+        $e = $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame(['files', 'current'], [$e->context()['reason'], $e->context()['pointer']]);
+        $this->assertSame([], $t->calls);
+        $this->assertSame($before, $this->committedTree(), 'no byte or pointer changed');
+        $last = $this->lastRun();
+        $this->assertFalse($last['current_moved']);
+        $this->assertFalse($last['previous_moved']);
+        $this->assertSame('current', $last['conflicting_pointer']);
+        $this->assertSame('tampered live', (string) file_get_contents($live), 'the live generation is not repaired in place');
+        file_put_contents($live, 'two');
+
+        // Tampered previous, same id (FPP rolled back to it): refuse, zero transfers.
+        $this->publisher()->rollback();
+        $this->assertSame($g1, (new Generations($this->e->publicationRoot))->currentGeneration());
+        $old = $this->dest . '/generations/' . $g1 . '/SECRETNAME Theme.mp3';
+        $good = (string) file_get_contents($old);
+        file_put_contents($old, 'tampered previous');
+        $before = $this->committedTree();
+        $e = $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame('previous', $e->context()['pointer']);
+        $this->assertSame([], $t->calls);
+        $this->assertSame($before, $this->committedTree());
+
+        // Intact previous: reused by pointer only - zero transfers, zero writes into it.
+        file_put_contents($old, $good);
+        $intact = $this->committedTree();
+        $result = $this->deliver($t);
+        $this->assertSame('delivered', $result['outcome']);
+        $this->assertContainsValue('reused', $result['stages']);
+        $this->assertSame([], $t->calls);
+        $this->assertSame(['current' => 'generations/' . $g1, 'previous' => 'generations/' . $g2], $this->links());
+        $after = $this->committedTree();
+        unset($intact['current'], $intact['previous'], $after['current'], $after['previous']);
+        $this->assertSame($intact, $after, 'only the pointers moved');
+    }
+
+    public function testAConflictingCompleteHistoricalGenerationIsNotOverwritten(): void
+    {
+        $this->publish();
+        $this->deliver();
+        $g2 = $this->publish(['Two.mp3' => 'two'] + self::MASTERS);
+        // A complete, self-consistent generation with the same id but different content.
+        $dir = $this->dest . '/generations/' . $g2;
+        mkdir($dir, 0750, true);
+        file_put_contents($dir . '/Other.mp3', 'different content');
+        Manifest::build($dir, ['Other.mp3'], $g2, '/elsewhere')->writeTo($this->dest . '/manifests/' . $g2 . '.json');
+        $before = $this->committedTree();
+        $pointers = $this->links();
+        $t = new SupplyFaultTransport();
+        $e = $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame('none', $e->context()['pointer']);
+        $this->assertSame([], $t->calls);
+        $this->assertSame($before, $this->committedTree(), 'the historical generation and its manifest are untouched');
+        $this->assertSame($pointers, $this->links());
+    }
+
+    public function testAnInterruptionAfterPromotionIsResumedWithoutRewritingTheGeneration(): void
+    {
+        $this->publish();
+        $this->deliver();
+        $g2 = $this->publish(['Two.mp3' => 'two'] + self::MASTERS);
+        $pointers = $this->links();
+        $d = new FaultSupplyDestination(new LocalSupplyDestination($this->dest), $this->dest, FaultSupplyDestination::COMMIT_THROW);
+        $this->assertRefused('supply_deliver.manifest_commit_failed', fn () => $this->deliver(null, $d));
+        $this->assertSame($pointers, $this->links(), 'no pointer moved');
+        $this->assertTrue(is_dir($this->dest . '/generations/' . $g2), 'promoted');
+        $this->assertFalse(file_exists($this->dest . '/manifests/' . $g2 . '.json'), 'manifest not committed');
+        $generationBytes = array_filter($this->committedTree(), static fn ($k) => str_starts_with($k, 'generations/'), ARRAY_FILTER_USE_KEY);
+
+        // Retry: the promoted generation verifies, so only its manifest is staged and committed.
+        $t = new SupplyFaultTransport();
+        $result = $this->deliver($t);
+        $this->assertSame('delivered', $result['outcome']);
+        $this->assertSame(['reused', 'manifest', 'manifest_committed', 'verified', 'activated'], $result['stages']);
+        $this->assertCount(1, $t->calls, 'only the manifest was transferred');
+        $this->assertSame($this->dest . '/staging/' . $g2 . '.manifest', $t->calls[0][1]);
+        $after = array_filter($this->committedTree(), static fn ($k) => str_starts_with($k, 'generations/'), ARRAY_FILTER_USE_KEY);
+        $this->assertSame($generationBytes, $after, 'the promoted generation was not rewritten');
         $this->assertSame('generations/' . $g2, $this->links()['current']);
     }
 
@@ -257,12 +392,11 @@ final class SupplyDeliverTest extends TestCase
         rmdir($this->dest . '/current');
         $this->assertSame([], $t->calls, 'Every refusal happened before any transfer.');
 
-        // A planted link on a master's path that leaves the root is refused before its copy.
-        mkdir($this->dest . '/generations/' . $gen . '/Masters', 0750, true);
-        TestCase::removeTree($this->dest . '/generations/' . $gen . '/Masters');
+        // A generation id already present with a planted link inside is refused as a conflict, never followed.
+        mkdir($this->dest . '/generations/' . $gen, 0750, true);
         symlink($outside, $this->dest . '/generations/' . $gen . '/Masters');
-        $e = $this->assertRefused('supply_deliver.failed', fn () => $this->deliver($t));
-        $this->assertSame('path.symlink_escape', $e->context()['reason']);
+        $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame([], $t->calls);
         $this->assertSame([], array_values(array_diff(scandir($outside), ['.', '..'])), 'Nothing was written through the link.');
         $this->assertSame(['current' => null, 'previous' => null], $this->links());
     }
@@ -347,7 +481,7 @@ final class SupplyDeliverTest extends TestCase
         $this->assertFalse($last['current_moved']);
         $this->assertTrue($last['previous_moved']);
         $this->assertSame([$g2, $g2, $g1, $g2], [$last['current_before'], $last['current_after'], $last['previous_before'], $last['previous_after']]);
-        $this->assertSame(['masters', 'manifest', 'verified'], $last['completed_stages']);
+        $this->assertSame(['masters', 'manifest', 'verified', 'promoted', 'manifest_committed'], $last['completed_stages']);
         // No automatic rollback: the links stay as observed; the server lane still reads g2.
         $this->assertSame($g2, (new SupplyMasterSource(new Generations($this->dest)))->load()->supplyGeneration);
         // A clean retry completes; g3 is live.
@@ -367,12 +501,15 @@ final class SupplyDeliverTest extends TestCase
         $last = $this->lastRun();
         $this->assertTrue($last['current_moved']);
         $this->assertSame($g2, $last['current_after']);
-        $this->assertSame(['masters', 'manifest', 'verified', 'activated'], $last['completed_stages']);
+        $this->assertSame(['masters', 'manifest', 'verified', 'promoted', 'manifest_committed', 'activated'], $last['completed_stages']);
         // No automatic restore; the server lane refuses the tampered live generation.
         $this->assertRefused('viewer.supply_unverified', fn () => (new SupplyMasterSource(new Generations($this->dest)))->load());
-        // Redelivery repairs the file and re-proves the live pointer.
-        $this->assertSame('delivered', $this->deliver()['outcome']);
-        $this->assertSame($g2, (new SupplyMasterSource(new Generations($this->dest)))->load()->supplyGeneration);
+        // Redelivery never repairs a live generation in place: it refuses, with zero transfers.
+        $before = $this->committedTree();
+        $t = new SupplyFaultTransport();
+        $this->assertRefused('supply_deliver.generation_conflict', fn () => $this->deliver($t));
+        $this->assertSame([], $t->calls);
+        $this->assertSame($before, $this->committedTree());
     }
 
     public function testAnActivationFailureBeforeAnySwapLeavesBothPointers(): void
@@ -520,6 +657,7 @@ final class FaultSupplyDestination implements SupplyDestination
     public const HALF_ACTIVATE = 'half';
     public const POST_TAMPER = 'post-tamper';
     public const ACTIVATE_THROW = 'throw';
+    public const COMMIT_THROW = 'commit-throw';
 
     public function __construct(private LocalSupplyDestination $inner, private string $root, private string $mode)
     {
@@ -558,6 +696,50 @@ final class FaultSupplyDestination implements SupplyDestination
     public function verifyGeneration(Manifest $manifest, string $generation): array
     {
         return $this->inner->verifyGeneration($manifest, $generation);
+    }
+
+    public function generationExists(string $generation): bool
+    {
+        return $this->inner->generationExists($generation);
+    }
+
+    public function quarantineStaging(string $generation): int
+    {
+        return $this->inner->quarantineStaging($generation);
+    }
+
+    public function beginStaging(string $generation): string
+    {
+        return $this->inner->beginStaging($generation);
+    }
+
+    public function beginManifestStaging(string $generation): string
+    {
+        return $this->inner->beginManifestStaging($generation);
+    }
+
+    public function verifyStaging(Manifest $manifest, string $generation): array
+    {
+        return $this->inner->verifyStaging($manifest, $generation);
+    }
+
+    public function stagedManifestBytes(string $generation): ?string
+    {
+        return $this->inner->stagedManifestBytes($generation);
+    }
+
+    public function promote(string $generation): void
+    {
+        $this->inner->promote($generation);
+    }
+
+    public function commitManifest(string $generation): void
+    {
+        if ($this->mode === self::COMMIT_THROW) {
+            // Promotion happened; the process dies before the manifest rename.
+            throw new PublishException('supply_deliver.manifest_commit_failed', 'The staged manifest could not be committed.');
+        }
+        $this->inner->commitManifest($generation);
     }
 
     public function activate(string $generation): void

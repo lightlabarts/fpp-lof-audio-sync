@@ -366,6 +366,15 @@ final class Publisher
      * Deliver the verified current generation as a complete supply root:
      * masters, the byte-identical manifest, read-back, then the pointers.
      *
+     * Destination generations are immutable. A fresh generation is copied
+     * into `staging/<gen>/` (marked incomplete) with its manifest staged
+     * beside it, verified there, promoted by one rename, and its manifest
+     * committed by one rename. An existing generation id - named by `current`
+     * or `previous`, or historical - is never written into: it is reused with
+     * zero transfers when it verifies exactly, and otherwise refused
+     * (`supply_deliver.generation_conflict`) with zero transfers. Stale
+     * staging from an interrupted run is moved to quarantine, never deleted.
+     *
      * Operator-only and default-disarmed; the timer never calls it, and the
      * legacy masters-only distribute() is untouched. The destination is an
      * ordinary supply root, so it is read back with Manifest::verifyAgainst
@@ -426,33 +435,71 @@ final class Publisher
             $destinationLock->acquire();
             $before = $destination->pointers();
 
-            if ($destination->currentGeneration() === $generation && $destination->manifestBytes($generation) === $manifestBytes
-                && $destination->verifyGeneration($manifest, $generation) === []) {
-                return $this->finishSupplyDelivery(['outcome' => 'unchanged', 'generation' => $generation], $started);
+            $pointers = $destination->pointers();
+            $currentId = self::pointerId($pointers['current']);
+            $previousId = self::pointerId($pointers['previous']);
+            $named = $currentId === $generation ? 'current' : ($previousId === $generation ? 'previous' : 'none');
+            $hasDir = $destination->generationExists($generation);
+            $destManifest = $destination->manifestBytes($generation);
+
+            if ($hasDir || $destManifest !== null || $named !== 'none') {
+                // An existing generation id is committed evidence: it is never
+                // written into, overwritten or repaired. It is reused only if it
+                // is exactly this generation; otherwise the run refuses with
+                // zero transfers.
+                $intact = $hasDir && $destination->verifyGeneration($manifest, $generation) === [];
+                if (!$intact || ($destManifest !== null && $destManifest !== $manifestBytes) || ($named !== 'none' && $destManifest === null)) {
+                    throw new IntegrityException('supply_deliver.generation_conflict', 'The destination already holds this generation id and it does not match; nothing was transferred or changed.', [
+                        'reason' => !$hasDir ? 'orphan_manifest' : (!$intact ? 'files' : 'manifest_bytes'),
+                        'pointer' => $named,
+                    ]);
+                }
+                if ($named === 'current') {
+                    return $this->finishSupplyDelivery(['outcome' => 'unchanged', 'generation' => $generation], $started);
+                }
+                $stages[] = 'reused';
+                if ($destManifest === null) {
+                    // Promoted but interrupted before its manifest was committed.
+                    $this->stageAndCommitManifest($transport, $destination, $generation, $manifestBytes, $stages);
+                }
+            } else {
+                // Fresh generation: stage, verify, then promote by one rename.
+                $quarantined = $destination->quarantineStaging($generation);
+                if ($quarantined > 0) {
+                    $stages[] = 'quarantined_stale_staging';
+                }
+                $staging = $destination->beginStaging($generation);
+                $sourceDir = $this->generations->generationDir($generation);
+                foreach ($manifest->paths() as $relative) {
+                    $destination->assertRealContainment('staging/' . $generation . '/' . $relative);
+                    $this->sendSupply($transport, $sourceDir, $staging, $relative);
+                }
+                $stages[] = 'masters';
+                $this->stageManifest($transport, $destination, $generation, $stages);
+
+                $readBack = $destination->verifyStaging($manifest, $generation);
+                if ($readBack !== [] || $destination->stagedManifestBytes($generation) !== $manifestBytes) {
+                    throw new IntegrityException('supply_deliver.destination_unverified', 'The staged generation does not verify; nothing was promoted and no pointer moved.', [
+                        'reason' => $readBack === [] ? 'manifest_bytes' : 'files', 'problem_count' => count($readBack),
+                    ]);
+                }
+                $stages[] = 'verified';
+                $destination->promote($generation);
+                $stages[] = 'promoted';
+                $destination->commitManifest($generation);
+                $stages[] = 'manifest_committed';
             }
 
-            // Masters, one manifest-listed file per transfer, containment re-proved before each.
-            $sourceRoot = $this->generations->root();
-            $destinationRoot = $config->destinationRoot;
-            foreach ($manifest->paths() as $relative) {
-                $rel = 'generations/' . $generation . '/' . $relative;
-                $destination->assertRealContainment($rel);
-                $this->sendSupply($transport, $sourceRoot, $destinationRoot, $rel);
-            }
-            $stages[] = 'masters';
-            $rel = 'manifests/' . $generation . '.json';
-            $destination->assertRealContainment($rel);
-            $this->sendSupply($transport, $sourceRoot, $destinationRoot, $rel);
-            $stages[] = 'manifest';
-
-            // Read back: exact file set, sizes, digests; manifest bytes identical.
+            // Read back the committed, immutable generation before any pointer moves.
             $readBack = $destination->verifyGeneration($manifest, $generation);
             if ($readBack !== [] || $destination->manifestBytes($generation) !== $manifestBytes) {
-                throw new IntegrityException('supply_deliver.destination_unverified', 'The delivered generation does not verify; no pointer was moved by this stage.', [
+                throw new IntegrityException('supply_deliver.destination_unverified', 'The committed generation does not verify; no pointer was moved by this stage.', [
                     'reason' => $readBack === [] ? 'manifest_bytes' : 'files', 'problem_count' => count($readBack),
                 ]);
             }
-            $stages[] = 'verified';
+            if (!in_array('verified', $stages, true)) {
+                $stages[] = 'verified';
+            }
 
             // Pointers last: previous, then the live current (not atomic as a pair).
             $destination->activate($generation);
@@ -486,6 +533,7 @@ final class Publisher
                 'error_code' => $safe->code(),
                 'reason' => is_string($context['reason'] ?? null) ? $context['reason'] : null,
                 'problem_count' => is_int($context['problem_count'] ?? null) ? $context['problem_count'] : null,
+                'conflicting_pointer' => is_string($context['pointer'] ?? null) ? $context['pointer'] : null,
                 'completed_stages' => $stages,
                 'pointers_observed' => $before === null ? 'not_read' : 'read_back',
                 'current_moved' => $currentMoved,
@@ -504,6 +552,39 @@ final class Publisher
             }
             $sourceLock->release();
         }
+    }
+
+    /**
+     * Stage the manifest beside the staged generation. Staging is never named
+     * by a pointer, so nothing a consumer reads changes here.
+     *
+     * @param list<string> $stages
+     */
+    private function stageManifest(Transport $transport, SupplyDestination $destination, string $generation, array &$stages): string
+    {
+        $dir = $destination->beginManifestStaging($generation);
+        $destination->assertRealContainment('staging/' . $generation . '.manifest/' . $generation . '.json');
+        $this->sendSupply($transport, $this->generations->manifestsRoot(), $dir, $generation . '.json');
+        $stages[] = 'manifest';
+
+        return $dir;
+    }
+
+    /**
+     * For a promoted generation whose manifest was never committed: stage it,
+     * prove its bytes, and commit it by rename (refused if one appeared).
+     *
+     * @param list<string> $stages
+     */
+    private function stageAndCommitManifest(Transport $transport, SupplyDestination $destination, string $generation, string $manifestBytes, array &$stages): void
+    {
+        $destination->quarantineStaging($generation);
+        $this->stageManifest($transport, $destination, $generation, $stages);
+        if ($destination->stagedManifestBytes($generation) !== $manifestBytes) {
+            throw new IntegrityException('supply_deliver.destination_unverified', 'The staged manifest does not verify; nothing was committed.', ['reason' => 'manifest_bytes']);
+        }
+        $destination->commitManifest($generation);
+        $stages[] = 'manifest_committed';
     }
 
     private function sendSupply(Transport $transport, string $from, string $to, string $relative): void

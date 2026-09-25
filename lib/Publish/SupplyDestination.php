@@ -38,6 +38,28 @@ interface SupplyDestination
      */
     public function verifyGeneration(Manifest $manifest, string $generation): array;
 
+    public function generationExists(string $generation): bool;
+
+    /** Move stale `staging/<gen>` and `staging/<gen>.manifest` into quarantine; returns how many moved. */
+    public function quarantineStaging(string $generation): int;
+
+    /** Create `staging/<gen>/` marked incomplete; returns its path. */
+    public function beginStaging(string $generation): string;
+
+    /** Create `staging/<gen>.manifest/`; returns its path. */
+    public function beginManifestStaging(string $generation): string;
+
+    /** @return list<array{asset:string,problem:string}> */
+    public function verifyStaging(Manifest $manifest, string $generation): array;
+
+    public function stagedManifestBytes(string $generation): ?string;
+
+    /** Clear the marker and rename staging into `generations/` (refused if it exists). */
+    public function promote(string $generation): void;
+
+    /** Rename the staged manifest into `manifests/` (refused if one exists). */
+    public function commitManifest(string $generation): void;
+
     /** Move the pointers with the existing Generations::activate(). */
     public function activate(string $generation): void;
 }
