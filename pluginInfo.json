@@ -3,19 +3,34 @@
 	"name": "LOF Audio Supply",
 	"author": "Lights on Falcon (Joe Hayden)",
 	"description": "Publishes audio from FPP media as verified, versioned generations with SHA-256 manifests, atomic activation, quarantine instead of deletion, and bounded rollback. Media supply only: it does not own browser authorization, playback synchronization, listener statistics, show decisions, or speaker authority.",
-	"homeURL": "https://github.com/ljhaydn/fpp-lof-audio-sync",
-	"srcURL": "https://github.com/ljhaydn/fpp-lof-audio-sync.git",
-	"bugURL": "https://github.com/ljhaydn/fpp-lof-audio-sync/issues",
+	"homeURL": "https://github.com/lightlabarts/fpp-lof-audio-sync",
+	"srcURL": "https://github.com/lightlabarts/fpp-lof-audio-sync.git",
+	"bugURL": "https://github.com/lightlabarts/fpp-lof-audio-sync/issues",
 	"allowUpdates": 1,
 	"versions": [
 		{
 			"minFPPVersion": "8.0",
-			"maxFPPVersion": "0",
-			"branch": "main",
+			"maxFPPVersion": "9.999",
+			"branch": "claude/fpp10-plugin-metadata-staging",
 			"sha": "",
 			"dependencies": {
 				"plugins": [],
-				"packages": ["rsync"],
+				"packages": [
+					"rsync"
+				],
+				"scripts": []
+			}
+		},
+		{
+			"minFPPVersion": "10.0",
+			"maxFPPVersion": "0",
+			"branch": "claude/fpp10-plugin-metadata-staging",
+			"sha": "",
+			"dependencies": {
+				"plugins": [],
+				"packages": [
+					"rsync"
+				],
 				"scripts": []
 			}
 		}
